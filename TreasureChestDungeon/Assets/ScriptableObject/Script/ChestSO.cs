@@ -19,7 +19,9 @@ public class ChestSO : ScriptableObject {
     public UnityAction action;
     public UnityAction checkAction;
     public UnityAction dropdownAction;
+    public UnityAction equipmentAction;
     public int levelStatic;
+    public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
     public void ChestRise()
     {
@@ -29,6 +31,7 @@ public class ChestSO : ScriptableObject {
     {
         if(canLoop)
         {
+            //DelayedExecute();
             action.Invoke();
         }
     }
@@ -40,9 +43,18 @@ public class ChestSO : ScriptableObject {
     {
         dropdownAction.Invoke();
     }
+    public void EquipmentRise()
+    {
+        equipmentAction.Invoke();
+    }
     public void SetLoop(bool canLoop)
     {
         ChestSO.canLoop = canLoop;
+    }
+    IEnumerator DelayedExecute()
+    {
+        yield return new WaitForSeconds(0.1f);
+        action.Invoke();
     }
     
 }
