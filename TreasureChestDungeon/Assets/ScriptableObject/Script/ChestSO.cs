@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum ChestLevel
+{
+    green = 0,
+    blur = 1,
+    purple = 2,
+    yellow = 3,
+    red = 4
 
+}
 [CreateAssetMenu(fileName = "ChestSO", menuName = "ScriptableObject/ChestSO", order = 0)]
 public class ChestSO : ScriptableObject {
+    public ChestLevel chestLevel;
     public static bool canLoop;
     public UnityAction action;
     public UnityAction checkAction;
+    public UnityAction dropdownAction;
+    public int levelStatic;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
     public void ChestRise()
     {
@@ -24,6 +35,10 @@ public class ChestSO : ScriptableObject {
     public void checkChestRise()
     {
         checkAction.Invoke();
+    }
+    public void DropdownRise()
+    {
+        dropdownAction.Invoke();
     }
     public void SetLoop(bool canLoop)
     {

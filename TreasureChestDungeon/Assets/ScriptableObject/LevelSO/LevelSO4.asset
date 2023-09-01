@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df604192b4042e46b357ea9579c01d7, type: 3}
-  m_Name: ChestSO
+  m_Script: {fileID: 11500000, guid: da1b7b8ed9f08b146adcf184d25937d3, type: 3}
+  m_Name: LevelSO4
   m_EditorClassIdentifier: 
-  chestLevel: 2
-  levelStatic: 4
-  levels:
-  - 1
-  - 0.6
-  - 0.3
-  - 0.1
-  - 0.05
+  levelName: red
+  color: {r: 1, g: 0.27923, b: 0, a: 1}
+  scale: 1.8
