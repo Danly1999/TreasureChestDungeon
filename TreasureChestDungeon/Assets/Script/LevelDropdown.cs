@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelDropdown : MonoBehaviour
 {
-    Dropdown dropdown;
+    TMP_Dropdown dropdown;
     public ChestSO chestSO;
     private void OnEnable() {
-        dropdown = GetComponent<Dropdown>();
+        dropdown = GetComponent<TMP_Dropdown>();
         chestSO.dropdownAction += CheckDropdown;
         chestSO.DropdownRise();
     }

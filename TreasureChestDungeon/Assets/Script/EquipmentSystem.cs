@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,19 +18,54 @@ public class EquipmentSystem : MonoBehaviour
     public EquipmentName equipmentName;
     
     Image image;
+    TextMeshProUGUI text;
+    int lv;
     private void OnEnable() {
         image = GetComponent<Image>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        if(PlayerData.instance.EquipmentLV[(int)equipmentName] != 0)
+        {
+            lv = PlayerData.instance.level;
+            text.text = "LV : " + lv;
+        }
+        if(PlayerData.instance.EquipmentSprite[(int)equipmentName] != null)
+        {
+            image.sprite = PlayerData.instance.EquipmentSprite[(int)equipmentName];
+        }
         chestSO.equipmentAction += SetEquipment;
+        chestSO.equipmentAction += EquipmentSave;
     }
     private void OnDisable() {
         chestSO.equipmentAction -= SetEquipment;
+        chestSO.equipmentAction -= EquipmentSave;
+    }
+    public void EquipmentSave()
+    {
+        PlayerData.instance.EquipmentLV[(int)equipmentName] = lv;
+        PlayerData.instance.EquipmentSprite[(int)equipmentName] = image.sprite;
     }
     public void SetEquipment()
     {
         if(this.equipmentName == chestSO.equipmentName)
         {
-            image.color = levelSOs[chestSO.levelStatic].color;
+            PlayerData.instance.EquipmentAchievement[(int)chestSO.equipmentName]++;
+            image.sprite = levelSOs[chestSO.levelStatic].sprites[(int)equipmentName];
+            lv = PlayerData.instance.level;
+            text.text = "LV : " + lv;
+            switch (equipmentName)
+            {
+                case EquipmentName.UpperGarment:
+                    PlayerData.instance.stats[0] = PlayerData.instance.level*1000*levelSOs[chestSO.levelStatic].scale;
+                    break;
+                case EquipmentName.Weapon:
+                    PlayerData.instance.stats[1] = PlayerData.instance.level*50*levelSOs[chestSO.levelStatic].scale;
+                    break;
+                case EquipmentName.LowerGarment:
+                    PlayerData.instance.stats[2] = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
+                    break;
 
+            }
+            chestSO.StatsRise();
         }
     }
 }

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: LevelSO3
   m_EditorClassIdentifier: 
   levelName: yellow
+  sprites:
+  - {fileID: 21300000, guid: 2304657c12523ce468fb55c6ad998ede, type: 3}
+  - {fileID: 21300000, guid: d772ae5269cfdd342a5d535815e484e0, type: 3}
+  - {fileID: 21300000, guid: de586f54b57b94e49a90d4919eb450bd, type: 3}
+  - {fileID: 21300000, guid: cce9f1fa7fa3d6a45b93f1195040049d, type: 3}
   color: {r: 1, g: 1, b: 0, a: 1}
   scale: 1.6

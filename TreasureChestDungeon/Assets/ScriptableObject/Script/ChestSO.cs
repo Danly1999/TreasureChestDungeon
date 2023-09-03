@@ -15,24 +15,29 @@ public enum ChestLevel
 [CreateAssetMenu(fileName = "ChestSO", menuName = "ScriptableObject/ChestSO", order = 0)]
 public class ChestSO : ScriptableObject {
     public ChestLevel chestLevel;
-    public static bool canLoop;
+    public bool canLoop;
     public UnityAction action;
     public UnityAction checkAction;
     public UnityAction dropdownAction;
     public UnityAction equipmentAction;
+    public UnityAction saveAction;
+    public UnityAction lordAction;
+    public UnityAction<float> expAction;
+    public UnityAction statsAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
     public void ChestRise()
     {
         action.Invoke();
+        ExpRise(PlayerData.instance.level*100);
     }
     public void LoopChestRise()
     {
         if(canLoop)
         {
             //DelayedExecute();
-            action.Invoke();
+            ChestRise();
         }
     }
     public void checkChestRise()
@@ -49,7 +54,23 @@ public class ChestSO : ScriptableObject {
     }
     public void SetLoop(bool canLoop)
     {
-        ChestSO.canLoop = canLoop;
+        this.canLoop = canLoop;
+    }
+    public void SaveRise()
+    {
+        saveAction.Invoke();
+    }
+    public void LordRise()
+    {
+        lordAction.Invoke();
+    }
+    public void ExpRise(float value)
+    {
+        expAction.Invoke(value);
+    }
+    public void StatsRise()
+    {
+        statsAction.Invoke();
     }
     IEnumerator DelayedExecute()
     {

@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1b7b8ed9f08b146adcf184d25937d3, type: 3}
   m_Name: LevelSO0
   m_EditorClassIdentifier: 
+  levelName: green
+  sprites:
+  - {fileID: 21300000, guid: 067ddd381e79cd740a547b867eca9a07, type: 3}
+  - {fileID: 21300000, guid: 8229fd9800c77904595128cd4ea970f2, type: 3}
+  - {fileID: 21300000, guid: 781bf35c935ca7c4084cec36bfe6ca07, type: 3}
+  - {fileID: 21300000, guid: 7ac278c6d0465b7458ce5ef1c6d09296, type: 3}
+  color: {r: 0, g: 1, b: 0, a: 1}
+  scale: 1

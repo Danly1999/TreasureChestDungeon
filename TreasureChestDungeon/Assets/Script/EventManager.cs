@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     public UnityEvent unityEvent;
     public UnityEvent checkEvent;
     private void OnEnable() {
+        chestSO.canLoop = false;
         chestSO.action += eve;
         chestSO.checkAction += checkChest;
     }
@@ -31,7 +32,6 @@ public class EventManager : MonoBehaviour
                 {
                     chestSO.levelStatic = i;
                     checkEvent.Invoke();
-                    Debug.Log(Enum.GetName(typeof(ChestLevel), i)+range);
                     break;
                 }
             }

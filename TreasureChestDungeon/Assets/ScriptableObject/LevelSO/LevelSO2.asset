@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: LevelSO2
   m_EditorClassIdentifier: 
   levelName: purple
+  sprites:
+  - {fileID: 21300000, guid: e33676e14db05d742ade8c89441b3c74, type: 3}
+  - {fileID: 21300000, guid: 44813ffc546224d40a1d3ecbb0c7ef3b, type: 3}
+  - {fileID: 21300000, guid: b4ed9e0798f90194fae8bcf3e86d7267, type: 3}
+  - {fileID: 21300000, guid: 0c3b163ea905edc4cbee2352917ba564, type: 3}
   color: {r: 0.65478957, g: 0.25293693, b: 0.8207547, a: 1}
   scale: 1.4

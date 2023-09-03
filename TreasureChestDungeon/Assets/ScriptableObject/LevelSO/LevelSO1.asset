@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: LevelSO1
   m_EditorClassIdentifier: 
   levelName: blur
+  sprites:
+  - {fileID: 21300000, guid: 97636c00d3b292648ad1d6ef9cfbfcf2, type: 3}
+  - {fileID: 21300000, guid: 544849b68a8a7aa42a9d6582ac709fb8, type: 3}
+  - {fileID: 21300000, guid: 8966b48c5a7b6cf46892c85691fd8422, type: 3}
+  - {fileID: 21300000, guid: e76b5c2a8a8b6ef449f80d0f7a9dca16, type: 3}
   color: {r: 0, g: 1, b: 1, a: 1}
   scale: 1.2
