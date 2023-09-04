@@ -24,6 +24,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction lordAction;
     public UnityAction<float> expAction;
     public UnityAction statsAction;
+    public UnityAction<EnimeSO> enimestatsAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -71,6 +72,10 @@ public class ChestSO : ScriptableObject {
     public void StatsRise()
     {
         statsAction.Invoke();
+    }
+    public void EnimestatsRise(EnimeSO enimeSO)
+    {
+        enimestatsAction.Invoke(enimeSO);
     }
     IEnumerator DelayedExecute()
     {
