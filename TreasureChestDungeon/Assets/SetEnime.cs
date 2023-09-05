@@ -14,6 +14,10 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
         // image = GetComponent<Image>();
         // image.sprite = enimeSO.enimeSprite;
     }
+    private void OnDisable() 
+    {
+        Destroy(gameObject);
+    }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {

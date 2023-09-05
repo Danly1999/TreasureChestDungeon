@@ -26,7 +26,9 @@ public class ChestSO : ScriptableObject {
     public UnityAction<float> expAction;
     public UnityAction statsAction;
     public UnityAction<EnimeSO> enimestatsAction;
-    public UnityAction<FightSO,int> fightSOSetAction;
+    public UnityAction<EnimeSO[]> EnimeSOsSetAction;
+    public UnityAction fightBlackGroundAction;
+    public UnityAction setEnimeSpriteAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -79,9 +81,17 @@ public class ChestSO : ScriptableObject {
     {
         enimestatsAction.Invoke(enimeSO);
     }
-    public void SetFightSORise(int id)
+    public void SetEnimeSOsRise(EnimeSO[] enimeSOs)
     {
-        fightSOSetAction.Invoke(fightSO,id);
+        EnimeSOsSetAction.Invoke(enimeSOs);
+    }
+    public void FightBlackGroundRise()
+    {
+        fightBlackGroundAction.Invoke();
+    }
+    public void SetEnimeSpriteRise()
+    {
+        setEnimeSpriteAction.Invoke();
     }
     IEnumerator DelayedExecute()
     {

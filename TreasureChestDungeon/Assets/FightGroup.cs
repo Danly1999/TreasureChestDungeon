@@ -15,8 +15,6 @@ public class FightGroup : MonoBehaviour
 
             enime.GetComponent<SetEnime>().enimeSO = enimeSOs[i];
             enime.GetComponent<Image>().sprite = enimeSOs[i].enimeSprite;
-            
-
         }
     }
 }

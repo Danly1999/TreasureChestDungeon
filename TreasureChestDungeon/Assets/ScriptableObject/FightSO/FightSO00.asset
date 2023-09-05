@@ -15,8 +15,8 @@ MonoBehaviour:
   scenceSprite: {fileID: 21300000, guid: 4fa3bc44cc3b95942bd753202254068e, type: 3}
   enimeSOs00:
   - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}
-  - {fileID: 11400000, guid: e397be6870455f541aab2ee7c05b664e, type: 2}
   - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}
+  - {fileID: 11400000, guid: e397be6870455f541aab2ee7c05b664e, type: 2}
   enimeSOs01: []
   enimeSOs02: []
   enimeSOsBoss: []
