@@ -9,17 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df604192b4042e46b357ea9579c01d7, type: 3}
-  m_Name: ChestSO
+  m_Script: {fileID: 11500000, guid: dc1db405808ae4e45b830e69826d1475, type: 3}
+  m_Name: EnimeSO00
   m_EditorClassIdentifier: 
-  chestLevel: 0
-  canLoop: 0
-  fightSO: {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
-  levelStatic: 4
-  equipmentName: 0
-  levels:
-  - 1
-  - 0.6
-  - 0.3
-  - 0.1
-  - 0.05
+  enimeName: Old Six
+  enimeSprite: {fileID: 21300000, guid: 6163fe4c3da3bf141b88aa499b54954e, type: 3}
+  hp: 200
+  act: 10
+  def: 10
+  crit: 0

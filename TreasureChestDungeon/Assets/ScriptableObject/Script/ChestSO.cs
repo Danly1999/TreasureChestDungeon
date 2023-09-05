@@ -16,6 +16,7 @@ public enum ChestLevel
 public class ChestSO : ScriptableObject {
     public ChestLevel chestLevel;
     public bool canLoop;
+    public FightSO fightSO;
     public UnityAction action;
     public UnityAction checkAction;
     public UnityAction dropdownAction;
@@ -25,6 +26,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<float> expAction;
     public UnityAction statsAction;
     public UnityAction<EnimeSO> enimestatsAction;
+    public UnityAction<FightSO,int> fightSOSetAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -76,6 +78,10 @@ public class ChestSO : ScriptableObject {
     public void EnimestatsRise(EnimeSO enimeSO)
     {
         enimestatsAction.Invoke(enimeSO);
+    }
+    public void SetFightSORise(int id)
+    {
+        fightSOSetAction.Invoke(fightSO,id);
     }
     IEnumerator DelayedExecute()
     {

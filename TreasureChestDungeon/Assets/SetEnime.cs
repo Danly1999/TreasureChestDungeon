@@ -9,11 +9,10 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
 {
     public ChestSO chestSO;
     public EnimeSO enimeSO;
-    Image image;
     private void OnEnable() 
     {
-        image = GetComponent<Image>();
-        image.sprite = enimeSO.enimeSprite;
+        // image = GetComponent<Image>();
+        // image.sprite = enimeSO.enimeSprite;
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
