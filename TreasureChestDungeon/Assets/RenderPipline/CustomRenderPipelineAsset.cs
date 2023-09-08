@@ -31,8 +31,14 @@ public class CustomRenderPipeline : RenderPipeline
             {
                 return;
             }
+            
+#if UNITY_EDITOR
+            if (camera.cameraType == CameraType.SceneView)
+            {
+                ScriptableRenderContext.EmitWorldGeometryForSceneView(camera);
+            }
+#endif
             cullingResults = context.Cull(ref cullingParameters);
-
             // ÷¥––‰÷»æ
             var drawSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), new SortingSettings(camera))
             {
@@ -41,6 +47,7 @@ public class CustomRenderPipeline : RenderPipeline
             filteringSettings = new FilteringSettings(RenderQueueRange.transparent);
             context.DrawRenderers(cullingResults, ref drawSettings, ref filteringSettings);
             context.Submit();
+
         }
     }
 }
