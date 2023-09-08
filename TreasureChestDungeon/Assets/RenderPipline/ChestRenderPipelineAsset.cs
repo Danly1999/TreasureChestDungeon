@@ -6,9 +6,16 @@ using UnityEngine.Experimental.Rendering;
 [CreateAssetMenu(menuName ="RenderPipline/ChestRenderPipelineAsset")]
 public class ChestRenderPipelineAsset : RenderPipelineAsset
 {
+    public Shader blurShader;
     protected override RenderPipeline CreatePipeline()
     {
-        return new ChestRenderPipeline();
+        if(blurShader == null)
+        {
+            blurShader = Shader.Find("RenderPipeline/Bloom");
+        }
+
+        Material mat = new Material(blurShader);
+        return new ChestRenderPipeline(mat);
     }
 }
 
@@ -18,6 +25,11 @@ public class ChestRenderPipeline : RenderPipeline
     FilteringSettings filteringSettings;
     RenderTargetHandle renderTargetHandleRight;
     RenderTargetHandle renderTargetHandleLeft;
+    Material blurMat;
+    public ChestRenderPipeline(Material blurMat)
+    {
+        this.blurMat = blurMat;
+    }
 
     protected override void Render(ScriptableRenderContext context, Camera[] cameras)
     {
@@ -37,7 +49,6 @@ public class ChestRenderPipeline : RenderPipeline
             cmdSetRender.ClearRenderTarget(true, true, Color.clear);
             context.ExecuteCommandBuffer(cmdSetRender);
             cmdSetRender.Clear();
-
 
             if (!camera.TryGetCullingParameters(out var cullingParameters))
             {
@@ -60,12 +71,10 @@ public class ChestRenderPipeline : RenderPipeline
             filteringSettings.sortingLayerRange = new SortingLayerRange(0,0);
             context.DrawRenderers(cullingResults, ref drawSettings, ref filteringSettings);
             CommandBuffer cmdBlit = new CommandBuffer(){name = "BlitTexture"};
-            Shader shader = Shader.Find("RenderPipeline/Bloom");
-            Material mat = new Material(shader);
             cmdBlit.SetGlobalTexture("_SourceTex", renderTargetHandleRight.id);
-            cmdBlit.Blit(renderTargetHandleRight.id, renderTargetHandleLeft.id , mat, 2);
+            cmdBlit.Blit(renderTargetHandleRight.id, renderTargetHandleLeft.id , blurMat, 2);
             cmdBlit.SetGlobalTexture("_SourceTex", renderTargetHandleLeft.id);
-            cmdBlit.Blit(renderTargetHandleLeft.id , renderTargetHandleRight.id, mat, 1);
+            cmdBlit.Blit(renderTargetHandleLeft.id , renderTargetHandleRight.id, blurMat, 1);
             cmdBlit.Blit(renderTargetHandleRight.id, BuiltinRenderTextureType.CameraTarget);
             cmdBlit.ReleaseTemporaryRT(renderTargetHandleRight.id);
             cmdBlit.ReleaseTemporaryRT(renderTargetHandleLeft.id);
