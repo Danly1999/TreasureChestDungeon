@@ -14,7 +14,7 @@ public class CustomRenderPipelineAsset : RenderPipelineAsset
 
 public class CustomRenderPipeline : RenderPipeline
 {
-    private CommandBuffer cameraBuffer = new CommandBuffer();
+    private CommandBuffer cameraBuffer ;
     private CullingResults cullingResults;
     FilteringSettings filteringSettings;
 
@@ -24,8 +24,13 @@ public class CustomRenderPipeline : RenderPipeline
         foreach (var camera in cameras)
         {
             // Çå¿ÕäÖÈ¾Ä¿±ê
+            //cameraBuffer = new CommandBuffer() { name = "ClearRenderTarget" };
+            //cameraBuffer.ClearRenderTarget(true, true, Color.blue);
+            //context.ExecuteCommandBuffer(cameraBuffer);
+            //cameraBuffer.Clear();
+
+
             context.SetupCameraProperties(camera);
-            cameraBuffer.ClearRenderTarget(true, true, Color.clear);
 
             if (!camera.TryGetCullingParameters(out var cullingParameters))
             {
@@ -46,6 +51,7 @@ public class CustomRenderPipeline : RenderPipeline
             };
             filteringSettings = new FilteringSettings(RenderQueueRange.transparent);
             context.DrawRenderers(cullingResults, ref drawSettings, ref filteringSettings);
+
             context.Submit();
 
         }
