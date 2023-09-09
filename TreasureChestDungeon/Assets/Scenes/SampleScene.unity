@@ -2987,7 +2987,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 1
+  m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
@@ -8222,6 +8222,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f040d8d2271e953478ac34f3bedb4f1b, type: 2}
+        m_TargetAssemblyTypeName: ChestSO, Assembly-CSharp
+        m_MethodName: SetBlurRise
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1238512460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10925,6 +10937,18 @@ MonoBehaviour:
       - m_Target: {fileID: 316010865}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f040d8d2271e953478ac34f3bedb4f1b, type: 2}
+        m_TargetAssemblyTypeName: ChestSO, Assembly-CSharp
+        m_MethodName: SetBlurRise
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
