@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ChestRender Pipeline Asset
   m_EditorClassIdentifier: 
   blurShader: {fileID: 4800000, guid: 8c20c0335b05f52478f0a29062a77795, type: 3}
+  blurScale: 0.5

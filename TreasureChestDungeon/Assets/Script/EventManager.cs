@@ -21,6 +21,7 @@ public class EventManager : MonoBehaviour
     {
         unityEvent.Invoke();
     }
+
     private void checkChest()
     {   
         float range = UnityEngine.Random.Range(0f,1f);

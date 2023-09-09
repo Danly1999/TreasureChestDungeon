@@ -1,4 +1,4 @@
-Shader "RenderPipeline/Bloom"
+Shader "RenderPipeline/Blur"
 {
     HLSLINCLUDE
         #pragma exclude_renderers gles
@@ -14,7 +14,7 @@ Shader "RenderPipeline/Bloom"
         float4 _SourceTex_TexelSize;
         TEXTURE2D_X(_SourceTexLowMip);
         float4 _SourceTexLowMip_TexelSize;
-
+        float _BlurScale;
         float4 _Params; // x: scatter, y: clamp, z: threshold (linear), w: threshold knee
 
         #define Scatter             _Params.x
@@ -102,7 +102,7 @@ Shader "RenderPipeline/Bloom"
         half4 FragBlurH(Varyings input) : SV_Target
         {
             UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-            float texelSize = _SourceTex_TexelSize.x;
+            float texelSize = _SourceTex_TexelSize.x*_BlurScale;
             float2 uv = UnityStereoTransformScreenSpaceTex(input.uv);
 
             // 9-tap gaussian blur on the downsampled source
@@ -126,7 +126,7 @@ Shader "RenderPipeline/Bloom"
         half4 FragBlurV(Varyings input) : SV_Target
         {
             UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-            float texelSize = _SourceTex_TexelSize.y;
+            float texelSize = _SourceTex_TexelSize.y*_BlurScale;
             float2 uv = UnityStereoTransformScreenSpaceTex(input.uv);
 
             // Optimized bilinear 5-tap gaussian on the same-sized source (9-tap equivalent)

@@ -93,6 +93,10 @@ public class ChestSO : ScriptableObject {
     {
         setEnimeSpriteAction.Invoke();
     }
+    public void SetBlurRise(bool isBlur)
+    {
+        ChestRenderPipeline.isBlur = isBlur;
+    }
     IEnumerator DelayedExecute()
     {
         yield return new WaitForSeconds(0.1f);
