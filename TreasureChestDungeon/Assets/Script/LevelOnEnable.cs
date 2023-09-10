@@ -31,6 +31,10 @@ public class LevelOnEnable : MonoBehaviour
                 targetStats = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
                 sourceStats = PlayerData.instance.stats[2];
                 break;
+            case EquipmentName.Accessory:
+                targetStats = PlayerData.instance.level * levelSOs[chestSO.levelStatic].scale;
+                sourceStats = PlayerData.instance.stats[3];
+                break;
 
         }
 

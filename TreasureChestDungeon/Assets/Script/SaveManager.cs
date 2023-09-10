@@ -25,11 +25,11 @@ public class SaveManager : MonoBehaviour
         }
 #else
         
-        if(PlayerPrefs.GetString("josn","0")!="0")
-        {
-            PlayerData.instance = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("josn"));
+        //if(PlayerPrefs.GetString("josn","0")!="0")
+        //{
+        //    PlayerData.instance = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("josn"));
 
-        }else
+        //}else
         {
             PlayerData.instance = new PlayerData();
         }

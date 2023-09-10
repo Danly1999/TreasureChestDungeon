@@ -65,6 +65,9 @@ public class EquipmentSystem : MonoBehaviour
                 case EquipmentName.LowerGarment:
                     PlayerData.instance.stats[2] = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
                     break;
+                case EquipmentName.Accessory:
+                    PlayerData.instance.stats[3] = PlayerData.instance.level * levelSOs[chestSO.levelStatic].scale;
+                    break;
 
             }
             chestSO.StatsRise();

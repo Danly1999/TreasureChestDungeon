@@ -9,10 +9,14 @@ public class EventManager : MonoBehaviour
     public ChestSO chestSO;
     public UnityEvent unityEvent;
     public UnityEvent checkEvent;
+    public UnityEvent OnEnaEvent;
+    public GameObject black;
     private void OnEnable() {
         chestSO.canLoop = false;
         chestSO.action += eve;
         chestSO.checkAction += checkChest;
+        chestSO.highLightAction += HighLight;
+        OnEnaEvent.Invoke();
     }
     private void OnDisable() {
         chestSO.action -= eve;
@@ -20,6 +24,12 @@ public class EventManager : MonoBehaviour
     private void eve()
     {
         unityEvent.Invoke();
+    }
+    private void HighLight(Canvas canvas)
+    {
+        black.GetComponent<AnyKeyDestory>().canvas = canvas;
+        black.SetActive(true);
+        canvas.sortingLayerName = "OtherDraw";
     }
 
     private void checkChest()

@@ -19,7 +19,7 @@ public class PlayerData
         level = 1;
         hp = 1;
         Experience = 0;
-        stats = new float[3]{100,10,5};
+        stats = new float[4]{100,10,5,1};
         EquipmentSprite = new Sprite[4]{null,null,null,null};
         EquipmentLV = new int[4]{0,0,0,0};
         EquipmentAchievement = new int[4]{0,0,0,0};

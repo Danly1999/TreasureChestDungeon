@@ -29,6 +29,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<EnimeSO[]> EnimeSOsSetAction;
     public UnityAction fightBlackGroundAction;
     public UnityAction setEnimeSpriteAction;
+    public UnityAction<Canvas> highLightAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -102,6 +103,11 @@ public class ChestSO : ScriptableObject {
     {
         chestLevel = (ChestLevel)Level;
     }
+    public void highLightRise(Canvas canvas)
+    {
+        highLightAction.Invoke(canvas);
+    }
+    
     IEnumerator DelayedExecute()
     {
         yield return new WaitForSeconds(0.1f);
