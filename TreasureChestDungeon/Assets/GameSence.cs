@@ -15,7 +15,11 @@ public void RiseFightBlackGround()
 {
     fightBlackGround.SetActive(true);
 }
-private void OnEnable() {
+    private void Start()
+    {
+        chestSO.SetEnimeSpriteRise();
+    }
+    private void OnEnable() {
     chestSO.fightBlackGroundAction += RiseFightBlackGround;
     enimeSOs.Add(fightSO.enimeSOs00);
     enimeSOs.Add(fightSO.enimeSOs01);
@@ -25,7 +29,7 @@ private void OnEnable() {
     {
         enimeGroup[i].GetComponent<EnimeGroup>().enimeSOs = enimeSOs[i];
     }
-       chestSO.SetEnimeSpriteRise();
+       
 }
 private void OnDisable() {
     chestSO.fightBlackGroundAction -= RiseFightBlackGround;

@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: OtherDraw
+  - name: Blur
     uniqueID: 453202865
+    locked: 0
+  - name: OtherDraw
+    uniqueID: 171021511
     locked: 0

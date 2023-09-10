@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StatsManager : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+public class StatsManager : MonoBehaviour
 {
     public ChestSO chestSO;
     RectTransform rectTransform;
@@ -36,14 +36,14 @@ public class StatsManager : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
         }
     }
 
-    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
-    {
-        rectTransform.localPosition = vector3;
-    }
+    //void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    //{
+    //    rectTransform.localPosition = vector3;
+    //}
 
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-    {
-        rectTransform.localPosition = Starvector3;
-        //rectTransform = starRectTransform;
-    }
+    //void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    //{
+    //    rectTransform.localPosition = Starvector3;
+    //    //rectTransform = starRectTransform;
+    //}
 }

@@ -9,21 +9,21 @@ public class SaveManager : MonoBehaviour
     public ChestSO chestSO;
     private void Awake() 
     {
-// #if UNITY_EDITOR
-//         filePath = Application.dataPath + "/PlayerData.json"; // 文件路径
-//         // 从文件加载JSON字符串
-//         if (File.Exists(filePath))
-//         {
-//             string json = File.ReadAllText(filePath);
-//             // 将JSON字符串反序列化为PlayerData对象
-//             PlayerData.instance = JsonUtility.FromJson<PlayerData>(json);
+#if UNITY_EDITOR
+        filePath = Application.dataPath + "/PlayerData.json"; // 文件路径
+        // 从文件加载JSON字符串
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            // 将JSON字符串反序列化为PlayerData对象
+            PlayerData.instance = JsonUtility.FromJson<PlayerData>(json);
 
-//         }else
-//         {
-//             PlayerData.instance = new PlayerData();
-//             Save();
-//         }
-// #else
+        }else
+        {
+            PlayerData.instance = new PlayerData();
+            Save();
+        }
+#else
         
         if(PlayerPrefs.GetString("josn","0")!="0")
         {
@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
             PlayerData.instance = new PlayerData();
         }
         
-//#endif
+#endif
 
 
     }
@@ -49,18 +49,18 @@ public class SaveManager : MonoBehaviour
     }
     public void Save()
     {
-// #if UNITY_EDITOR
-//         // 将PlayerData对象序列化为JSON字符串
-//         string json = JsonUtility.ToJson(PlayerData.instance);
-
-//         // 将JSON字符串保存到文件
-//         File.WriteAllText(Application.dataPath + "/PlayerData.json", json);
-// #else
+#if UNITY_EDITOR
         // 将PlayerData对象序列化为JSON字符串
         string json = JsonUtility.ToJson(PlayerData.instance);
 
+        // 将JSON字符串保存到文件
+        File.WriteAllText(Application.dataPath + "/PlayerData.json", json);
+#else
+        //将PlayerData对象序列化为JSON字符串
+        string json = JsonUtility.ToJson(PlayerData.instance);
+
         PlayerPrefs.SetString("josn",json);
-//#endif
+#endif
 
     }
 

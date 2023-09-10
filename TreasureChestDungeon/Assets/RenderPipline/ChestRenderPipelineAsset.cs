@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.UI;
+using System.Linq; // 导入LINQ库以进行排序
 
 [CreateAssetMenu(menuName ="RenderPipline/ChestRenderPipelineAsset")]
 public class ChestRenderPipelineAsset : RenderPipelineAsset
@@ -37,6 +39,7 @@ public class ChestRenderPipeline : RenderPipeline
 
     protected override void Render(ScriptableRenderContext context, Camera[] cameras)
     {
+        
 
         foreach (var camera in cameras)
         {
@@ -68,14 +71,17 @@ public class ChestRenderPipeline : RenderPipeline
             }
 #endif
             cullingResults = context.Cull(ref cullingParameters);
-
-            var drawSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), new SortingSettings(camera))
+            SortingSettings sortingSettings = new SortingSettings(camera);
+            sortingSettings.criteria = SortingCriteria.SortingLayer;
+            var drawSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), sortingSettings)
             {
                 overrideMaterial = null
             };
             filteringSettings = new FilteringSettings(RenderQueueRange.transparent);
-            filteringSettings.sortingLayerRange = new SortingLayerRange(0,0);
+            filteringSettings.sortingLayerRange = new SortingLayerRange(0, 0);
             context.DrawRenderers(cullingResults, ref drawSettings, ref filteringSettings);
+
+
 
             if(isBlur)
             {
@@ -92,7 +98,7 @@ public class ChestRenderPipeline : RenderPipeline
 
             }
 
-            filteringSettings.sortingLayerRange = new SortingLayerRange(1,1);
+            filteringSettings.sortingLayerRange = new SortingLayerRange(1,short.MaxValue);
             context.DrawRenderers(cullingResults, ref drawSettings, ref filteringSettings);
             context.Submit();
 

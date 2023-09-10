@@ -15,6 +15,7 @@ public class FightGroup : MonoBehaviour
 
             enime.GetComponent<SetEnime>().enimeSO = enimeSOs[i];
             enime.GetComponent<Image>().sprite = enimeSOs[i].enimeSprite;
+            enime.GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,Random.Range(-15f,15f)));
         }
     }
 }

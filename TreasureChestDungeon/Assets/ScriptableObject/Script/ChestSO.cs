@@ -32,6 +32,7 @@ public class ChestSO : ScriptableObject {
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
+    public Sprite playerSprite;
     public void ChestRise()
     {
         action.Invoke();
@@ -96,6 +97,10 @@ public class ChestSO : ScriptableObject {
     public void SetBlurRise(bool isBlur)
     {
         ChestRenderPipeline.isBlur = isBlur;
+    }
+    public void SetChestLevel(int Level)
+    {
+        chestLevel = (ChestLevel)Level;
     }
     IEnumerator DelayedExecute()
     {

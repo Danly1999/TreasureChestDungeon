@@ -10,6 +10,7 @@ public class FightManager : MonoBehaviour
     public EnimeSO[] enimeSOs;
     public GameObject enimeStats;
     public GameObject enimeGroup;
+    public GameObject PlayerGroup;
     private void OnEnable() 
     {
         chestSO.enimestatsAction += SetEnimeStats;
@@ -30,7 +31,17 @@ public class FightManager : MonoBehaviour
     {
         this.enimeSOs = enimeSOs;
         enimeGroup.GetComponent<FightGroup>().enimeSOs = enimeSOs;
-
         enimeGroup.SetActive(true);
+
+        List<EnimeSO> PlayerenimeSOs = new List<EnimeSO>();
+        EnimeSO PlayerenimeSO = ScriptableObject.CreateInstance<EnimeSO>();
+        PlayerenimeSO.act = PlayerData.instance.stats[0];
+        PlayerenimeSO.hp = PlayerData.instance.stats[1];
+        PlayerenimeSO.def = PlayerData.instance.stats[2];
+        PlayerenimeSO.enimeSprite = chestSO.playerSprite;
+        PlayerenimeSOs.Add(PlayerenimeSO);
+        PlayerGroup.GetComponent<FightGroup>().enimeSOs = PlayerenimeSOs.ToArray();
+        PlayerGroup.SetActive(true);
+
     }
 }

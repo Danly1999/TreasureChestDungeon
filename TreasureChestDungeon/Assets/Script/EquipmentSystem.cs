@@ -46,8 +46,10 @@ public class EquipmentSystem : MonoBehaviour
     }
     public void SetEquipment()
     {
+        
         if(this.equipmentName == chestSO.equipmentName)
         {
+            GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,Random.Range(-15f,15f)));
             PlayerData.instance.EquipmentAchievement[(int)chestSO.equipmentName]++;
             image.sprite = levelSOs[chestSO.levelStatic].sprites[(int)equipmentName];
             lv = PlayerData.instance.level;

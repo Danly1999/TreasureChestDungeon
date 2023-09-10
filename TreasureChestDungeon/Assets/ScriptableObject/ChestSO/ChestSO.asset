@@ -15,11 +15,12 @@ MonoBehaviour:
   chestLevel: 0
   canLoop: 0
   fightSO: {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
-  levelStatic: 4
-  equipmentName: 0
+  levelStatic: 0
+  equipmentName: 2
   levels:
   - 1
   - 0.6
   - 0.3
   - 0.1
   - 0.05
+  playerSprite: {fileID: 21300000, guid: c4198623a48e52e4b9806a74deac8db1, type: 3}
