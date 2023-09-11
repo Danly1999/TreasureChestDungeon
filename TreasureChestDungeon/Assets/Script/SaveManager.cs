@@ -9,6 +9,8 @@ public class SaveManager : MonoBehaviour
     public ChestSO chestSO;
     private void Awake() 
     {
+        chestSO.chestLevel = 0;
+        chestSO.language = 0;
 #if UNITY_EDITOR
         filePath = Application.dataPath + "/PlayerData.json"; // 文件路径
         // 从文件加载JSON字符串
@@ -25,15 +27,15 @@ public class SaveManager : MonoBehaviour
         }
 #else
         
-        //if(PlayerPrefs.GetString("josn","0")!="0")
-        //{
-        //    PlayerData.instance = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("josn"));
+        if(PlayerPrefs.GetString("josn","0")!="0")
+        {
+            PlayerData.instance = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("josn"));
 
-        //}else
+        }else
         {
             PlayerData.instance = new PlayerData();
         }
-        
+
 #endif
 
 
@@ -58,8 +60,8 @@ public class SaveManager : MonoBehaviour
 #else
         //将PlayerData对象序列化为JSON字符串
         string json = JsonUtility.ToJson(PlayerData.instance);
-
         PlayerPrefs.SetString("josn",json);
+        //File.WriteAllText(Application.streamingAssetsPath + "/PlayerData.json", json);
 #endif
 
     }

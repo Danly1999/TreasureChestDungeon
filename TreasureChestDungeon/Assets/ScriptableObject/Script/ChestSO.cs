@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,11 +13,18 @@ public enum ChestLevel
     red = 4
 
 }
+public enum Language
+{
+    中文 = 0,
+    English = 1
+}
 [CreateAssetMenu(fileName = "ChestSO", menuName = "ScriptableObject/ChestSO", order = 0)]
 public class ChestSO : ScriptableObject {
     public ChestLevel chestLevel;
     public bool canLoop;
     public FightSO fightSO;
+    public Language language;
+    public LanguageSO[] languageSOs;
     public UnityAction action;
     public UnityAction checkAction;
     public UnityAction dropdownAction;
@@ -30,6 +38,8 @@ public class ChestSO : ScriptableObject {
     public UnityAction fightBlackGroundAction;
     public UnityAction setEnimeSpriteAction;
     public UnityAction<Canvas> highLightAction;
+    public UnityAction<int> setDescriptionTestAction;
+    public UnityAction setNormalTestAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -106,6 +116,23 @@ public class ChestSO : ScriptableObject {
     public void highLightRise(Canvas canvas)
     {
         highLightAction.Invoke(canvas);
+    }
+    public void SetLanguageRise(int LanguageID)
+    {
+
+    }
+    public void SetTestRise(int testsID,TextMeshProUGUI text)
+    {
+        text.text = languageSOs[(int)language].tests[testsID];
+        text.text = text.text.Replace("\\n", "\n");
+    }
+    public void SetDescriptionTestRise(int testsID)
+    {
+        setDescriptionTestAction.Invoke(testsID);
+    }
+    public void SetNormalTestRise()
+    {
+        setNormalTestAction.Invoke();
     }
     
     IEnumerator DelayedExecute()

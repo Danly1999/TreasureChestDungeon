@@ -25,7 +25,15 @@ public class FightManager : MonoBehaviour
     {
         enimeStats.SetActive(true);
         enimeStats.GetComponentsInChildren<Image>()[1].sprite = enimeSO.enimeSprite;
-        enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = enimeSO.enimeName+"\nHP:"+enimeSO.hp+"\nAct:"+enimeSO.act+"\nDef:"+enimeSO.def+"\nCrit:"+enimeSO.crit;
+        switch (chestSO.language)
+        {
+            case (Language)0:
+            enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = enimeSO.enimeNameCN+"\n生命值:"+enimeSO.hp+"\n攻击力:"+enimeSO.act+"\n防御力:"+enimeSO.def+"\n暴击率:"+enimeSO.crit;
+            break;
+            case (Language)1:
+            enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = enimeSO.enimeNameEN+"\nHP:"+enimeSO.hp+"\nAct:"+enimeSO.act+"\nDef:"+enimeSO.def+"\nCrit:"+enimeSO.crit;
+            break;
+        }
     }
     public void SetfightSO(EnimeSO[] enimeSOs)
     {

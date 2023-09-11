@@ -13,7 +13,6 @@ public class LevelDropdown : MonoBehaviour
     private void OnEnable() {
         dropdown = GetComponent<TMP_Dropdown>();
         chestSO.dropdownAction += CheckDropdown;
-        chestSO.DropdownRise();
     }
     private void OnDisable()
     {
@@ -21,6 +20,8 @@ public class LevelDropdown : MonoBehaviour
     }
     public void CheckDropdown()
     {
-        chestSO.chestLevel = (ChestLevel)dropdown.value;
+        chestSO.language = (Language)dropdown.value;
+        chestSO.SetDescriptionTestRise((int)chestSO.chestLevel);
+        chestSO.SetNormalTestRise();
     }
 }

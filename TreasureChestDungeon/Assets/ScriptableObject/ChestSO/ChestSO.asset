@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df604192b4042e46b357ea9579c01d7, type: 3}
   m_Name: ChestSO
   m_EditorClassIdentifier: 
-  chestLevel: 0
+  chestLevel: 1
   canLoop: 0
   fightSO: {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
+  language: 1
+  languageSOs:
+  - {fileID: 11400000, guid: 8a232c609e3a9df4cbeca365643a30d0, type: 2}
+  - {fileID: 11400000, guid: ff0af456ae7bf7c46b2bf747060ffb50, type: 2}
   levelStatic: 0
-  equipmentName: 2
+  equipmentName: 1
   levels:
   - 1
   - 0.6
