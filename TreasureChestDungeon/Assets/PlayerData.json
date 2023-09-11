@@ -1,1 +1,1 @@
-{"level":1,"hp":1.0,"Experience":0.0,"stats":[100.0,10.0,5.0,0.0],"EquipmentSprite":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}],"EquipmentLV":[0,0,0,0],"EquipmentAchievement":[0,0,0,0]}
+{"level":2,"hp":1.0,"Experience":200.0,"stats":[2400.0,90.0,72.0,1.399999976158142],"EquipmentSprite":[{"instanceID":20716},{"instanceID":20742},{"instanceID":20744},{"instanceID":20730}],"EquipmentLV":[2,2,1,1],"EquipmentAchievement":[2,1,1,2]}

@@ -9,8 +9,11 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
 {
     public ChestSO chestSO;
     public EnimeSO enimeSO;
+    public Slider slider;
     private void OnEnable() 
     {
+        slider = GetComponentInChildren<Slider>();
+        slider.value = 1;
         // image = GetComponent<Image>();
         // image.sprite = enimeSO.enimeSprite;
     }
