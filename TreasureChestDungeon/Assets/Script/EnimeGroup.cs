@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class EnimeGroup : MonoBehaviour, IPointerClickHandler
 {
+    public FightLoop fightloop;
+    public int GroupID;
     public ChestSO chestSO;
     public EnimeSO[] enimeSOs;
     public GameObject perfab;
@@ -21,7 +23,7 @@ public class EnimeGroup : MonoBehaviour, IPointerClickHandler
         }
     }
 
-        private void OnEnable() {
+    private void OnEnable() {
         chestSO.setEnimeSpriteAction += SetSprite;
 
     }
@@ -36,6 +38,7 @@ public class EnimeGroup : MonoBehaviour, IPointerClickHandler
     {
         if(enimeSOs != null)
         {
+            fightloop.GroupID = GroupID;
             chestSO.FightBlackGroundRise();
             chestSO.SetEnimeSOsRise(enimeSOs);
             chestSO.SetBlurRise(true);

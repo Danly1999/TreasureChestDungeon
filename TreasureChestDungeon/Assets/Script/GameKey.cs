@@ -7,7 +7,7 @@ public class GameKey : MonoBehaviour
     public ChestSO chestSO;
     private int[] ints = new int[4]{0,0,0,0};
 
-    private void OnEnable() {
+    private void Start() {
         chestSO.equipmentAction += Check;
         Check();
     }

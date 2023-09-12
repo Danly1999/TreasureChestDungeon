@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class FightLoop : MonoBehaviour
 {
+    public int GroupID;
+    public Button returnButton;
+    public GameObject[] pass;
+    public GameObject blackGround;
     public GameObject playersGroup;
     public GameObject enimesGroup;
     public GameObject partical;
+    public GameObject diePartical;
+    public GameObject PaPartical;
     public List<GameObject> players;
     public List<GameObject> enimes;
     public List<GameObject> all;
@@ -60,15 +66,24 @@ public class FightLoop : MonoBehaviour
                     enimeID++;
                 }
             }
-            all[enimeID].GetComponentInChildren<Slider>().value -= 0.3f;
+            
+            GameObject die = null;
+            if(all[enimeID].GetComponentInChildren<Slider>().value-0.3f <= 0)
+            {
+                die = Instantiate(diePartical, all[enimeID].transform);
+            }
             all[enimeID].GetComponent<Animator>().enabled = true;
             all[enimeID].GetComponent<Image>().color = Color.red;
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(0.6f);
+            GameObject pa = Instantiate(PaPartical, all[enimeID].transform);
+            all[enimeID].GetComponentInChildren<Slider>().value -= 0.3f;
+            yield return new WaitForSeconds(0.6f);
             all[enimeID].GetComponent<Animator>().enabled = false;
             all[enimeID].GetComponent<Image>().color = Color.white;
             Destroy(par);
             all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
             yield return new WaitForSeconds(0.2f);
+            Destroy(pa);
             if(all[enimeID].GetComponentInChildren<Slider>().value <= 0)
             {
                 if(isplayers)
@@ -79,6 +94,7 @@ public class FightLoop : MonoBehaviour
                     players.Remove(all[enimeID]);
                 }
                 Destroy(all[enimeID]);
+                Destroy(die);
                 all.Remove(all[enimeID]);
             }
             if(all[0]!=null)
@@ -89,6 +105,17 @@ public class FightLoop : MonoBehaviour
 
             }
         }
+        pass[GroupID].SetActive(true);
+        if(pass.Length-1>GroupID)
+        {
+            pass[GroupID+1].SetActive(false);
+        }else
+        {
+            //change scene;
+        }
+        blackGround.SetActive(false);
+        returnButton.onClick.Invoke();
+
 
     }
 
