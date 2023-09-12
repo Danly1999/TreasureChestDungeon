@@ -5,9 +5,10 @@ using UnityEngine;
 public class AnyKeyDestory : MonoBehaviour
 {
     public Canvas canvas;
+    public ChestSO chestSO;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class AnyKeyDestory : MonoBehaviour
         if(Input.anyKey)
         {
             canvas.sortingLayerName = "Default";
+            chestSO.SetBlurRise(false);
             Destroy(gameObject);
         }
     }

@@ -57,6 +57,12 @@ public class ChestRenderPipeline : RenderPipeline
                 cmdSetRender.ClearRenderTarget(true, true, Color.clear);
                 context.ExecuteCommandBuffer(cmdSetRender);
                 cmdSetRender.Clear();
+            }else
+            {
+                CommandBuffer cmdSetRender = new CommandBuffer(){name = "ClearTex"};
+                cmdSetRender.ClearRenderTarget(true, true, Color.clear);
+                context.ExecuteCommandBuffer(cmdSetRender);
+                cmdSetRender.Clear();
             }
 
             if (!camera.TryGetCullingParameters(out var cullingParameters))

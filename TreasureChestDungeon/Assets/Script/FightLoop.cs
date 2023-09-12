@@ -7,6 +7,7 @@ public class FightLoop : MonoBehaviour
 {
     public GameObject playersGroup;
     public GameObject enimesGroup;
+    public GameObject partical;
     public List<GameObject> players;
     public List<GameObject> enimes;
     public List<GameObject> all;
@@ -44,6 +45,7 @@ public class FightLoop : MonoBehaviour
             }
             bool isplayers = players.Contains(all[0]);
             all[0].GetComponent<RectTransform>().localScale *= 1.3f;
+            GameObject par = Instantiate(partical, all[0].transform);
             int enimeID = 1;
             if(isplayers)
             {
@@ -59,6 +61,14 @@ public class FightLoop : MonoBehaviour
                 }
             }
             all[enimeID].GetComponentInChildren<Slider>().value -= 0.3f;
+            all[enimeID].GetComponent<Animator>().enabled = true;
+            all[enimeID].GetComponent<Image>().color = Color.red;
+            yield return new WaitForSeconds(1.3f);
+            all[enimeID].GetComponent<Animator>().enabled = false;
+            all[enimeID].GetComponent<Image>().color = Color.white;
+            Destroy(par);
+            all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+            yield return new WaitForSeconds(0.2f);
             if(all[enimeID].GetComponentInChildren<Slider>().value <= 0)
             {
                 if(isplayers)
@@ -71,10 +81,8 @@ public class FightLoop : MonoBehaviour
                 Destroy(all[enimeID]);
                 all.Remove(all[enimeID]);
             }
-            yield return new WaitForSeconds(1.0f);
             if(all[0]!=null)
             {
-                all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
                 GameObject obj = all[0];
                 all.Remove(all[0]);
                 all.Add(obj);

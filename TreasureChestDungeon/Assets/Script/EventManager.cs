@@ -29,6 +29,7 @@ public class EventManager : MonoBehaviour
     {
         black.GetComponent<AnyKeyDestory>().canvas = canvas;
         black.SetActive(true);
+        chestSO.SetBlurRise(true);
         canvas.sortingLayerName = "OtherDraw";
     }
 
