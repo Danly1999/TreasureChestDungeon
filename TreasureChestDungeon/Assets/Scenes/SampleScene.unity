@@ -6784,7 +6784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcadf04b5d3562845a0d0ae16b89f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  title: 0
   enimeSOs: []
   perfab: {fileID: 1144432676988547364, guid: 51113a75151fa4f4e9021f754b6112f7, type: 3}
   enimes: []
@@ -9555,7 +9555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcadf04b5d3562845a0d0ae16b89f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
+  title: 0
   enimeSOs: []
   perfab: {fileID: 1144432676988547364, guid: 51113a75151fa4f4e9021f754b6112f7, type: 3}
   enimes: []
@@ -12840,6 +12840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroupID: 0
+  chestSO: {fileID: 11400000, guid: f040d8d2271e953478ac34f3bedb4f1b, type: 2}
   returnButton: {fileID: 715291108}
   pass:
   - {fileID: 368028516}
@@ -12852,6 +12853,7 @@ MonoBehaviour:
   partical: {fileID: 7510559465124958146, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
   diePartical: {fileID: 110908959608813562, guid: 1193a3550abd9174da00b87b4ac16aa2, type: 3}
   PaPartical: {fileID: 110908959608813562, guid: d6aa64a81a13bd347a7fc30b0eade8dd, type: 3}
+  BoomPaPartical: {fileID: 110908959608813562, guid: 7a75be3f27f4484459c890f72f3ba4e9, type: 3}
   players: []
   enimes: []
   all: []

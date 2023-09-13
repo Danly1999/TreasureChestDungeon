@@ -16,6 +16,6 @@ MonoBehaviour:
   enimeNameEN: Bro.Kun
   enimeSprite: {fileID: 21300000, guid: c4c863cc44592dd40b37c1d0c64e8716, type: 3}
   hp: 100
-  act: 20
+  act: 100
   def: 10
-  crit: 0
+  crit: 1

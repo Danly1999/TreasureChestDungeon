@@ -43,8 +43,8 @@ public class FightManager : MonoBehaviour
 
         List<EnimeSO> PlayerenimeSOs = new List<EnimeSO>();
         EnimeSO PlayerenimeSO = ScriptableObject.CreateInstance<EnimeSO>();
-        PlayerenimeSO.act = PlayerData.instance.stats[0];
-        PlayerenimeSO.hp = PlayerData.instance.stats[1];
+        PlayerenimeSO.hp = PlayerData.instance.stats[0];
+        PlayerenimeSO.act = PlayerData.instance.stats[1];
         PlayerenimeSO.def = PlayerData.instance.stats[2];
         PlayerenimeSO.crit = PlayerData.instance.stats[3];
         PlayerenimeSO.enimeSprite = chestSO.playerSprite;

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Title
+{
+    Player,
+    EnimeNormal,
+    EnimeBoss
+}
 public class FightGroup : MonoBehaviour
 {
-    public bool isPlayer;
+    public Title title;
     public EnimeSO[] enimeSOs;
     public GameObject  perfab;
     public List<GameObject> enimes;

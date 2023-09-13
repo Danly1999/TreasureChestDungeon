@@ -22,7 +22,7 @@ public enum Language
 public class ChestSO : ScriptableObject {
     public ChestLevel chestLevel;
     public bool canLoop;
-    public FightSO fightSO;
+    public FightSO[] fightSOs;
     public Language language;
     public LanguageSO[] languageSOs;
     public UnityAction action;
@@ -40,6 +40,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<Canvas> highLightAction;
     public UnityAction<int> setDescriptionTestAction;
     public UnityAction setNormalTestAction;
+    public UnityAction resetEnimeGroupAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -133,6 +134,10 @@ public class ChestSO : ScriptableObject {
     public void SetNormalTestRise()
     {
         setNormalTestAction.Invoke();
+    }
+    public void ResetEnimeGroupRise()
+    {
+        resetEnimeGroupAction.Invoke();
     }
     
     IEnumerator DelayedExecute()

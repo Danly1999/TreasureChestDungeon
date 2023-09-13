@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FightLoop : MonoBehaviour
 {
     public int GroupID;
+    public ChestSO chestSO;
     public Button returnButton;
     public GameObject[] pass;
     public GameObject blackGround;
@@ -14,6 +15,7 @@ public class FightLoop : MonoBehaviour
     public GameObject partical;
     public GameObject diePartical;
     public GameObject PaPartical;
+    public GameObject BoomPaPartical;
     public List<GameObject> players;
     public List<GameObject> enimes;
     public List<GameObject> all;
@@ -68,7 +70,12 @@ public class FightLoop : MonoBehaviour
             }
             
             GameObject die = null;
-            if(all[enimeID].GetComponentInChildren<Slider>().value-0.3f <= 0)
+            EnimeSO enimeAct = all[0].      GetComponent<SetEnime>().enimeSO;
+            EnimeSO enimeDef = all[enimeID].GetComponent<SetEnime>().enimeSO;
+            float crit = enimeAct.crit>Random.Range(0f,100f)?2:1;
+            float hit = Mathf.Max(enimeAct.act-enimeDef.def,0)*crit/enimeDef.hp;
+            Debug.Log(hit);
+            if(all[enimeID].GetComponentInChildren<Slider>().value-hit <= 0)
             {
                 die = Instantiate(diePartical, all[enimeID].transform);
             }
@@ -76,7 +83,12 @@ public class FightLoop : MonoBehaviour
             all[enimeID].GetComponent<Image>().color = Color.red;
             yield return new WaitForSeconds(0.6f);
             GameObject pa = Instantiate(PaPartical, all[enimeID].transform);
-            all[enimeID].GetComponentInChildren<Slider>().value -= 0.3f;
+            GameObject BoomPa = null;
+            if(crit == 2)
+            {
+                BoomPa = Instantiate(BoomPaPartical, all[enimeID].transform);
+            }
+            all[enimeID].GetComponentInChildren<Slider>().value -= hit;
             yield return new WaitForSeconds(0.6f);
             all[enimeID].GetComponent<Animator>().enabled = false;
             all[enimeID].GetComponent<Image>().color = Color.white;
@@ -84,6 +96,10 @@ public class FightLoop : MonoBehaviour
             all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
             yield return new WaitForSeconds(0.2f);
             Destroy(pa);
+            if(crit == 2)
+            {
+                Destroy(BoomPa);
+            }
             if(all[enimeID].GetComponentInChildren<Slider>().value <= 0)
             {
                 if(isplayers)
@@ -112,6 +128,8 @@ public class FightLoop : MonoBehaviour
         }else
         {
             //change scene;
+            PlayerData.instance.fightSOID = Mathf.Min(PlayerData.instance.fightSOID+1,chestSO.fightSOs.Length-1);
+            chestSO.ResetEnimeGroupRise();
         }
         blackGround.SetActive(false);
         returnButton.onClick.Invoke();
