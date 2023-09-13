@@ -128,6 +128,7 @@ public class FightLoop : MonoBehaviour
         }else
         {
             //change scene;
+            pass[0].SetActive(false);
             PlayerData.instance.fightSOID = Mathf.Min(PlayerData.instance.fightSOID+1,chestSO.fightSOs.Length-1);
             chestSO.ResetEnimeGroupRise();
         }

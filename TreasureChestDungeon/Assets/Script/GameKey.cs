@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameKey : MonoBehaviour
 {
     public ChestSO chestSO;
+    public GameObject obj;
     private int[] ints = new int[4]{0,0,0,0};
 
     private void Start() {
@@ -29,7 +30,7 @@ public class GameKey : MonoBehaviour
         }
         if(checkID == 4)
         {
-            gameObject.SetActive(false);
+            obj.SetActive(true);
         }
 
     }

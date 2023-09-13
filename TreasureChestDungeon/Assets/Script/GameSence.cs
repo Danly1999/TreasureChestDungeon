@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSence : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameSence : MonoBehaviour
     }
     public void ResetEnimeGroup()
     {
+        GetComponent<Image>().sprite = fightSO.scenceSprite;
         fightSO = chestSO.fightSOs[PlayerData.instance.fightSOID];
         Debug.Log(fightSO.name);
         enimeSOs = new List<EnimeSO[]>();
