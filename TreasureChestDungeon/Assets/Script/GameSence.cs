@@ -18,9 +18,8 @@ public class GameSence : MonoBehaviour
     }
     public void ResetEnimeGroup()
     {
-        GetComponent<Image>().sprite = fightSO.scenceSprite;
         fightSO = chestSO.fightSOs[PlayerData.instance.fightSOID];
-        Debug.Log(fightSO.name);
+        GetComponent<Image>().sprite = fightSO.scenceSprite;
         enimeSOs = new List<EnimeSO[]>();
         enimeSOs.Add(fightSO.enimeSOs00);
         enimeSOs.Add(fightSO.enimeSOs01);
@@ -41,9 +40,10 @@ public class GameSence : MonoBehaviour
     }
     private void OnEnable() 
     {
+        fightSO = chestSO.fightSOs[PlayerData.instance.fightSOID];
+        GetComponent<Image>().sprite = fightSO.scenceSprite;
         chestSO.resetEnimeGroupAction += ResetEnimeGroup;
         chestSO.fightBlackGroundAction += RiseFightBlackGround;
-        fightSO = chestSO.fightSOs[PlayerData.instance.fightSOID];
         enimeSOs.Add(fightSO.enimeSOs00);
         enimeSOs.Add(fightSO.enimeSOs01);
         enimeSOs.Add(fightSO.enimeSOs02);

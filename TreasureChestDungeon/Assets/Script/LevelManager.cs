@@ -7,23 +7,32 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     TextMeshProUGUI text;
+    public TextMeshProUGUI goldText;
     public Slider slider;
     public ChestSO chestSO;
     private void OnEnable() {
         text = GetComponent<TextMeshProUGUI>();
         chestSO.lordAction += SetLevel;
         chestSO.lordAction += SetExp;
+        chestSO.lordAction += SetGold;
         chestSO.expAction += AddExperience;
+        chestSO.goldAction += SetGold;
 
     }
     private void OnDisable() {
         chestSO.lordAction -= SetLevel;
         chestSO.lordAction -= SetExp;
+        chestSO.lordAction -= SetGold;
         chestSO.expAction -= AddExperience;
+        chestSO.goldAction -= SetGold;
     }
     public void SetLevel()
     {
         text.text = "LV : "+PlayerData.instance.level.ToString();
+    }
+    public void SetGold()
+    {
+        goldText.text = "$ : "+PlayerData.instance.goldQuantity.ToString();
     }
     public void SetExp()
     {

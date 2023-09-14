@@ -1,1 +1,1 @@
-{"level":2,"hp":1.0,"Experience":600.0,"stats":[2800.0,100.0,48.0,1.0],"EquipmentSprite":[{"instanceID":20898},{"instanceID":20892},{"instanceID":20886},{"instanceID":20888}],"EquipmentLV":[2,2,2,1],"EquipmentAchievement":[3,1,2,2],"fightSOID":1}
+{"level":2,"hp":1.0,"Experience":1000.0,"stats":[2400.0,50.0,40.0,3.200000047683716],"EquipmentSprite":[{"instanceID":20914},{"instanceID":20908},{"instanceID":20910},{"instanceID":20936}],"EquipmentLV":[2,2,2,2],"EquipmentAchievement":[2,2,2,3],"fightSOID":0,"chestQuantity":300,"goldQuantity":0}

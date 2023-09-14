@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65e7d11a079399489e5591f521133e2, type: 3}
   m_Name: FightSO00
   m_EditorClassIdentifier: 
-  scenceSprite: {fileID: 21300000, guid: 4fa3bc44cc3b95942bd753202254068e, type: 3}
+  scenceSprite: {fileID: 21300000, guid: 160167d8d4eefc44d8356971da079e7b, type: 3}
   enimeSOs00:
   - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}
   - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}

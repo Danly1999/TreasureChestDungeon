@@ -52,8 +52,7 @@ public class FightLoop : MonoBehaviour
                 break;
             }
             bool isplayers = players.Contains(all[0]);
-            all[0].GetComponent<RectTransform>().localScale *= 1.3f;
-            GameObject par = Instantiate(partical, all[0].transform);
+            //GameObject par = Instantiate(partical, all[0].transform);
             int enimeID = 1;
             if(isplayers)
             {
@@ -69,36 +68,47 @@ public class FightLoop : MonoBehaviour
                 }
             }
             
-            GameObject die = null;
-            EnimeSO enimeAct = all[0].      GetComponent<SetEnime>().enimeSO;
-            EnimeSO enimeDef = all[enimeID].GetComponent<SetEnime>().enimeSO;
-            float crit = enimeAct.crit>Random.Range(0f,100f)?2:1;
-            float hit = Mathf.Max(enimeAct.act-enimeDef.def,0)*crit/enimeDef.hp;
+            SetEnime setEnimeAct = all[0].      GetComponent<SetEnime>();
+            SetEnime setEnimeDef = all[enimeID].GetComponent<SetEnime>();
+            //GameObject die = null;
+
+            all[0].GetComponent<RectTransform>().localScale *= 1.3f;
+            setEnimeAct.particle.SetActive(true);
+            EnimeSO enimeSOAct = setEnimeAct.enimeSO;
+            EnimeSO enimeSODef = setEnimeDef.enimeSO;
+            float crit = enimeSOAct.crit>Random.Range(0f,100f)?2:1;
+            float hit = Mathf.Max(enimeSOAct.act-enimeSODef.def,0)*crit/enimeSODef.hp;
             Debug.Log(hit);
             if(all[enimeID].GetComponentInChildren<Slider>().value-hit <= 0)
             {
-                die = Instantiate(diePartical, all[enimeID].transform);
+                //die = Instantiate(diePartical, all[enimeID].transform);
+                setEnimeDef.die.SetActive(true);
             }
             all[enimeID].GetComponent<Animator>().enabled = true;
             all[enimeID].GetComponent<Image>().color = Color.red;
             yield return new WaitForSeconds(0.6f);
-            GameObject pa = Instantiate(PaPartical, all[enimeID].transform);
-            GameObject BoomPa = null;
+            //GameObject pa = Instantiate(PaPartical, all[enimeID].transform);
+            setEnimeDef.pa.SetActive(true);
+            //GameObject BoomPa = null;
             if(crit == 2)
             {
-                BoomPa = Instantiate(BoomPaPartical, all[enimeID].transform);
+                //BoomPa = Instantiate(BoomPaPartical, all[enimeID].transform);
+                setEnimeDef.boomPa.SetActive(true); 
             }
             all[enimeID].GetComponentInChildren<Slider>().value -= hit;
             yield return new WaitForSeconds(0.6f);
             all[enimeID].GetComponent<Animator>().enabled = false;
             all[enimeID].GetComponent<Image>().color = Color.white;
-            Destroy(par);
+            setEnimeAct.particle.SetActive(false);
+            //Destroy(par);
             all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
             yield return new WaitForSeconds(0.2f);
-            Destroy(pa);
+            //Destroy(pa);
+            setEnimeDef.pa.SetActive(false);
             if(crit == 2)
             {
-                Destroy(BoomPa);
+                //Destroy(BoomPa);
+                setEnimeDef.boomPa.SetActive(false);
             }
             if(all[enimeID].GetComponentInChildren<Slider>().value <= 0)
             {
@@ -110,7 +120,8 @@ public class FightLoop : MonoBehaviour
                     players.Remove(all[enimeID]);
                 }
                 Destroy(all[enimeID]);
-                Destroy(die);
+                //Destroy(die);
+                setEnimeDef.die.SetActive(false);
                 all.Remove(all[enimeID]);
             }
             if(all[0]!=null)
@@ -125,10 +136,14 @@ public class FightLoop : MonoBehaviour
         if(pass.Length-1>GroupID)
         {
             pass[GroupID+1].SetActive(false);
+            PlayerData.instance.goldQuantity += 20*(PlayerData.instance.fightSOID+1)/2;
+            chestSO.SetGoldRise();
         }else
         {
             //change scene;
             pass[0].SetActive(false);
+            PlayerData.instance.goldQuantity += 50*(PlayerData.instance.fightSOID+1)/2;
+            chestSO.SetGoldRise();
             PlayerData.instance.fightSOID = Mathf.Min(PlayerData.instance.fightSOID+1,chestSO.fightSOs.Length-1);
             chestSO.ResetEnimeGroupRise();
         }

@@ -41,6 +41,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<int> setDescriptionTestAction;
     public UnityAction setNormalTestAction;
     public UnityAction resetEnimeGroupAction;
+    public UnityAction goldAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
@@ -138,6 +139,10 @@ public class ChestSO : ScriptableObject {
     public void ResetEnimeGroupRise()
     {
         resetEnimeGroupAction.Invoke();
+    }
+    public void SetGoldRise()
+    {
+        goldAction.Invoke();
     }
     
     IEnumerator DelayedExecute()

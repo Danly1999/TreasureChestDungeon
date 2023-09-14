@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
             Save();
         }
 #else
-        
+         
         if(PlayerPrefs.GetString("josn","0")!="0")
         {
             PlayerData.instance = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("josn"));

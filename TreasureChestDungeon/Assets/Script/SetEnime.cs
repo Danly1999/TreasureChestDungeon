@@ -10,6 +10,10 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
     public ChestSO chestSO;
     public EnimeSO enimeSO;
     public Slider slider;
+    public GameObject pa;
+    public GameObject boomPa;
+    public GameObject die;
+    public GameObject particle;
     private void OnEnable() 
     {
         slider = GetComponentInChildren<Slider>();
