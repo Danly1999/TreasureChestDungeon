@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df604192b4042e46b357ea9579c01d7, type: 3}
   m_Name: ChestSO
   m_EditorClassIdentifier: 
-  chestLevel: 0
+  chestLevel: 2
   canLoop: 0
   fightSOs:
   - {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
@@ -21,12 +21,12 @@ MonoBehaviour:
   languageSOs:
   - {fileID: 11400000, guid: 8a232c609e3a9df4cbeca365643a30d0, type: 2}
   - {fileID: 11400000, guid: ff0af456ae7bf7c46b2bf747060ffb50, type: 2}
-  levelStatic: 0
-  equipmentName: 2
-  levels:
-  - 1
-  - 0.6
-  - 0.3
-  - 0.1
-  - 0.05
+  levelStatic: 4
+  equipmentName: 3
+  chestLevelSO:
+  - {fileID: 11400000, guid: 7ce8228e65221024581b2d3961d2061d, type: 2}
+  - {fileID: 11400000, guid: 7286ff059de25c34eba0da73c8ea20c0, type: 2}
+  - {fileID: 11400000, guid: 21fec8393c66ed0498c27add3ee943e6, type: 2}
+  - {fileID: 11400000, guid: 7618d2927f6aeb44ebff8accf357b47f, type: 2}
+  - {fileID: 11400000, guid: 3cdfd5015fd77904e8ee62cd700f2f7b, type: 2}
   playerSprite: {fileID: 21300000, guid: c4198623a48e52e4b9806a74deac8db1, type: 3}

@@ -35,11 +35,12 @@ public class EventManager : MonoBehaviour
     private void checkChest()
     {   
         float range = UnityEngine.Random.Range(0f,1f);
-        if(range<=chestSO.levels[(int)chestSO.chestLevel])//获取当前选择等级是否开到了宝箱
+        float[] chestLevels = chestSO.chestLevelSO[PlayerData.instance.chestLevel].levels;
+        if(range<=chestLevels[(int)chestSO.chestLevel])//获取当前选择等级是否开到了宝箱
         {
-            for (int i = chestSO.levels.Length-1; i >= 0; i--)//从最高级开始探查开到的是哪个等级的宝箱
+            for (int i = chestLevels.Length-1; i >= 0; i--)//从最高级开始探查开到的是哪个等级的宝箱
             {
-                if(range<=chestSO.levels[i])
+                if(range<=chestLevels[i])
                 {
                     chestSO.levelStatic = i;
                     checkEvent.Invoke();

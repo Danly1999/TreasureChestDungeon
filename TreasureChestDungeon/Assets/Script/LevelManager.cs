@@ -41,16 +41,17 @@ public class LevelManager : MonoBehaviour
     }
     public void AddExperience(float value)
     {
-        float experience = (PlayerData.instance.Experience+value)/(PlayerData.instance.level*PlayerData.instance.level*500);
+        float exp = PlayerData.instance.Experience+value*PlayerData.instance.chestLevel;
+        float experience = (exp)/(PlayerData.instance.level*PlayerData.instance.level*500);
 
         if(experience<1)
         {
             slider.value = Mathf.Max(0,experience);
-            PlayerData.instance.Experience = PlayerData.instance.Experience+value;
+            PlayerData.instance.Experience = exp;
         }
         else
         {
-            PlayerData.instance.Experience = (PlayerData.instance.Experience+value)-(PlayerData.instance.level*PlayerData.instance.level*500);
+            PlayerData.instance.Experience = (exp)-(PlayerData.instance.level*PlayerData.instance.level*500);
             PlayerData.instance.level++;
             slider.value = Mathf.Max(0,PlayerData.instance.Experience);
         }

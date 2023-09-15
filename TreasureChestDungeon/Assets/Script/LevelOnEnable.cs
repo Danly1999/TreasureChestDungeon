@@ -38,16 +38,16 @@ public class LevelOnEnable : MonoBehaviour
 
         }
 
-        text.text = chestSO.equipmentName.ToString() +"\n"+ sourceStats + "--> -->"+targetStats;
+        text.text = "LV : "+ PlayerData.instance.level +"\n"+ sourceStats + "--> -->"+targetStats;
         if(sourceStats>targetStats)
         {
-            text.color = Color.red;
+            text.fontSize = 25;
         }else if(sourceStats<targetStats)
         {
-            text.color = Color.green;
+            text.fontSize = 36;
         }else
         {
-            text.color = Color.black;
+            text.fontSize = 30;
         }
 
         EquipmentImage.sprite = levelSOs[chestSO.levelStatic].sprites[(int)chestSO.equipmentName];

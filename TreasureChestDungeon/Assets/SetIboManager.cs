@@ -22,6 +22,16 @@ public class SetIboManager : MonoBehaviour
         chestSO.enimestatsAction -= SetIboStats;
         chestSO.CreateIboAction -= CreateIbo;
     }
+    private void Start() {
+        for (int i = 0; i < PlayerData.instance.ibosID.Count; i++)
+        {
+            iboGroup[i].SetActive(true);
+            iboGroup[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,UnityEngine.Random.Range(-15f,15f)));
+            iboGroup[i].GetComponent<SetIboStats>().enimeSO = iboSO.ibos[PlayerData.instance.ibosID[i]];
+            iboGroup[i].GetComponentInChildren<TextMeshProUGUI>().text = chestSO.language == 0? iboSO.ibos[PlayerData.instance.ibosID[i]].enimeNameCN : iboSO.ibos[PlayerData.instance.ibosID[i]].enimeNameEN;
+            iboGroup[i].GetComponentsInChildren<Image>()[1].sprite = iboSO.ibos[PlayerData.instance.ibosID[i]].enimeSprite;
+        }
+    }
     public void SetIboStats(EnimeSO enimeSO)
     {
         iboStats.SetActive(true);
@@ -39,9 +49,11 @@ public class SetIboManager : MonoBehaviour
             if(ibo.activeSelf == false)
             {
                 ibo.SetActive(true);
+                ibo.GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,UnityEngine.Random.Range(-15f,15f)));
                 ibo.GetComponent<SetIboStats>().enimeSO = iboSO.ibos[ibosID];
                 ibo.GetComponentInChildren<TextMeshProUGUI>().text = chestSO.language == 0? iboSO.ibos[ibosID].enimeNameCN : iboSO.ibos[ibosID].enimeNameEN;
                 ibo.GetComponentsInChildren<Image>()[1].sprite = iboSO.ibos[ibosID].enimeSprite;
+                PlayerData.instance.ibosID.Add(ibosID);
                 return;
 
             }

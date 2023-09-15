@@ -8,11 +8,12 @@ public class PlayerData
     public float hp;
     public float Experience;
     public float[] stats;
-    public Sprite[] EquipmentSprite;
+    public int[] EquipmentSpriteID;
     public int[] EquipmentLV;
     public int[] EquipmentAchievement;
     public int fightSOID;
     public int chestQuantity;
+    public int chestLevel;
     public int goldQuantity;
     public List<int> ibosID;
     public int[] fightibosID;
@@ -25,11 +26,12 @@ public class PlayerData
         hp = 1;
         Experience = 0;
         stats = new float[4]{100,10,5,1};
-        EquipmentSprite = new Sprite[4]{null,null,null,null};
+        EquipmentSpriteID = new int[4]{-1,-1,-1,-1};
         EquipmentLV = new int[4]{0,0,0,0};
         EquipmentAchievement = new int[4]{0,0,0,0};
         fightSOID = 0;
         chestQuantity = 300;
+        chestLevel = 0;
         goldQuantity = 0;
         ibosID = new List<int>();
         fightibosID = new int[2]{0,0};

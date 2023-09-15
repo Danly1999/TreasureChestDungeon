@@ -8,6 +8,7 @@ public class EnimeSO : ScriptableObject
     public string enimeNameCN;
     public string enimeNameEN;
     public Sprite enimeSprite;
+    public int lv = 1;
     public float hp;
     public float act;
     public float def;

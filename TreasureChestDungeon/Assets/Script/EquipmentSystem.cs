@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,9 +29,9 @@ public class EquipmentSystem : MonoBehaviour
             lv = PlayerData.instance.level;
             text.text = "LV : " + lv;
         }
-        if(PlayerData.instance.EquipmentSprite[(int)equipmentName] != null)
+        if(PlayerData.instance.EquipmentSpriteID[(int)equipmentName] >= 0)
         {
-            image.sprite = PlayerData.instance.EquipmentSprite[(int)equipmentName];
+            image.sprite = levelSOs[PlayerData.instance.EquipmentSpriteID[(int)equipmentName]].sprites[(int)equipmentName];
         }
         chestSO.equipmentAction += SetEquipment;
         chestSO.equipmentAction += EquipmentSave;
@@ -42,14 +43,17 @@ public class EquipmentSystem : MonoBehaviour
     public void EquipmentSave()
     {
         PlayerData.instance.EquipmentLV[(int)equipmentName] = lv;
-        PlayerData.instance.EquipmentSprite[(int)equipmentName] = image.sprite;
+        if(this.equipmentName == chestSO.equipmentName)
+        {
+            PlayerData.instance.EquipmentSpriteID[(int)equipmentName] = chestSO.levelStatic;
+        }
     }
     public void SetEquipment()
     {
         
         if(this.equipmentName == chestSO.equipmentName)
         {
-            GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,Random.Range(-15f,15f)));
+            GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,UnityEngine.Random.Range(-15f,15f)));
             PlayerData.instance.EquipmentAchievement[(int)chestSO.equipmentName]++;
             image.sprite = levelSOs[chestSO.levelStatic].sprites[(int)equipmentName];
             lv = PlayerData.instance.level;

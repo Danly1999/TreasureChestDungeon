@@ -45,7 +45,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<int> CreateIboAction;
     public int levelStatic;
     public EquipmentName equipmentName;
-    public float[] levels = new float[5] {1f,0.6f,0.3f,0.1f,0.05f};
+    public ChestLevelSO[] chestLevelSO;
     public Sprite playerSprite;
     public void ChestRise()
     {
