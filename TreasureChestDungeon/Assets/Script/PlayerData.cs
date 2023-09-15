@@ -14,6 +14,8 @@ public class PlayerData
     public int fightSOID;
     public int chestQuantity;
     public int goldQuantity;
+    public List<int> ibosID;
+    public int[] fightibosID;
 
     //public float 
     // 私有构造函数，在类初始化的时候进行调用
@@ -29,6 +31,8 @@ public class PlayerData
         fightSOID = 0;
         chestQuantity = 300;
         goldQuantity = 0;
+        ibosID = new List<int>();
+        fightibosID = new int[2]{0,0};
     }
     // 使用单例模式，设置一个全局单例对象
     public static PlayerData instance = new PlayerData();
