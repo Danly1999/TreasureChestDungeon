@@ -16,9 +16,12 @@ public class AnyKeyDestory : MonoBehaviour
     {
         if(Input.anyKey)
         {
-            canvas.sortingLayerName = "Default";
-            chestSO.SetBlurRise(false);
-            Destroy(gameObject);
+            if(canvas)
+            {
+                canvas.sortingLayerName = "Default";
+                chestSO.SetBlurRise(false);
+            }
+            gameObject.SetActive(false);
         }
     }
 }

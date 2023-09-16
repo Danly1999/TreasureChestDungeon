@@ -9,6 +9,7 @@ public class LevelTestManager : MonoBehaviour
     public TextMeshProUGUI description;
     public TextMeshProUGUI[] equipmentTests;
     public TextMeshProUGUI[] NormalTests;
+    public TextMeshProUGUI[] shopTests;
     public void SetDescriptionTest(int id)
     {
         chestSO.SetTestRise(id,description);
@@ -22,6 +23,10 @@ public class LevelTestManager : MonoBehaviour
         for (int i = 0; i < NormalTests.Length; i++)
         {
             chestSO.SetTestRise(9+i,NormalTests[i]);
+        }
+        for (int i = 0; i < shopTests.Length; i++)
+        {
+            chestSO.SetTestRise(14+i,shopTests[i]);
         }
     }
     private void OnEnable() {

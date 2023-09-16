@@ -15,7 +15,7 @@ public class PlayerData
     public int chestQuantity;
     public int chestLevel;
     public int goldQuantity;
-    public List<int> ibosID;
+    public int[] ibosID;
     public int[] fightibosID;
 
     //public float 
@@ -33,7 +33,7 @@ public class PlayerData
         chestQuantity = 300;
         chestLevel = 0;
         goldQuantity = 0;
-        ibosID = new List<int>();
+        ibosID = new int[18]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
         fightibosID = new int[2]{0,0};
     }
     // 使用单例模式，设置一个全局单例对象

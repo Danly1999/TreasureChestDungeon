@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
     }
     public void AddExperience(float value)
     {
-        float exp = PlayerData.instance.Experience+value*PlayerData.instance.chestLevel;
+        float exp = PlayerData.instance.Experience+value*(PlayerData.instance.chestLevel+1);
         float experience = (exp)/(PlayerData.instance.level*PlayerData.instance.level*500);
 
         if(experience<1)
