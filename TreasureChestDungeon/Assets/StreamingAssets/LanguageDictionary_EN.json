@@ -1,0 +1,31 @@
+{"languageDictionary":
+{
+"_TextID_language"      :"Language",
+"_TextID_borkun"        :"Bro.Kun",
+"_TextID_oldsix"        :"Old Six",
+"_TextID_gqer"          :"G.Qer",
+"_TextID_Equipment"     :"Equipment",
+"_TextID_Weapon"        :"Weapon",
+"_TextID_UpperGarment"  :"UpperGarment",
+"_TextID_LowerGarment"  :"LowerGarment",
+"_TextID_Accessary"     :"Accessary",
+"_TextID_HP"            :"HP",
+"_TextID_Act"           :"Act",
+"_TextID_Def"           :"Def",
+"_TextID_Crit"          :"Crit",
+"_TextID_StarFight"     :"Lets\n Fightting",
+"_TextID_Retrun"        :"Retrun",
+"_TextID_StarLoop"      :"Star\nAuto",
+"_TextID_Endloop"       :"End\nAuto",
+"_TextID_CanLoop"       :"Auto\nopen chests",
+"_TextID_Next"          :"Next",
+"_TextID_Change"        :"Change",
+"_TextID_Save"          :"Save",
+"_TextID_ChestLevelUp"  :"Chest\nLevelUP",
+"_TextID_Green"         :"Will not discard any equipment.",
+"_TextID_Blur"          :"Discard equipment below blue quality (excluding blue)",
+"_TextID_Purple"        :"Discard equipment below purple quality (excluding purple)",
+"_TextID_Yellow"        :"Discard equipment below Yellow quality (excluding Yellow)",
+"_TextID_Red"           :"Discard equipment below red quality (excluding red)"
+}
+}

@@ -16,14 +16,14 @@ public enum ChestLevel
 public enum Language
 {
     中文 = 0,
-    English = 1
+    English = 1,
+    日本語 = 2
 }
 [CreateAssetMenu(fileName = "ChestSO", menuName = "ScriptableObject/ChestSO", order = 0)]
 public class ChestSO : ScriptableObject {
     public ChestLevel chestLevel;
     public bool canLoop;
     public FightSO[] fightSOs;
-    public Language language;
     public LanguageSO[] languageSOs;
     public UnityAction action;
     public UnityAction checkAction;
@@ -38,7 +38,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction fightBlackGroundAction;
     public UnityAction setEnimeSpriteAction;
     public UnityAction<Canvas> highLightAction;
-    public UnityAction<int> setDescriptionTestAction;
+    public UnityAction<string> setDescriptionTestAction;
     public UnityAction setNormalTestAction;
     public UnityAction resetEnimeGroupAction;
     public UnityAction goldAction;
@@ -47,6 +47,9 @@ public class ChestSO : ScriptableObject {
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
     public Sprite playerSprite;
+    public Dictionary<string, string> languageDictionary_CN = new Dictionary<string, string>();
+    public Dictionary<string, string> languageDictionary_EN = new Dictionary<string, string>();
+    public Dictionary<string, string> languageDictionary_JP = new Dictionary<string, string>();
     public void ChestRise()
     {
         action.Invoke();
@@ -71,6 +74,7 @@ public class ChestSO : ScriptableObject {
     public void EquipmentRise()
     {
         equipmentAction.Invoke();
+        SaveRise();
     }
     public void SetLoop(bool canLoop)
     {
@@ -124,12 +128,8 @@ public class ChestSO : ScriptableObject {
     {
 
     }
-    public void SetTestRise(int testsID,TextMeshProUGUI text)
-    {
-        text.text = languageSOs[(int)language].tests[testsID];
-        text.text = text.text.Replace("\\n", "\n");
-    }
-    public void SetDescriptionTestRise(int testsID)
+
+    public void SetDescriptionTestRise(string testsID)
     {
         setDescriptionTestAction.Invoke(testsID);
     }

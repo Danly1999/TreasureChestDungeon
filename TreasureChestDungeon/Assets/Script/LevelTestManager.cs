@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,34 +8,33 @@ public class LevelTestManager : MonoBehaviour
 {
     public ChestSO chestSO;
     public TextMeshProUGUI description;
-    public TextMeshProUGUI[] equipmentTests;
-    public TextMeshProUGUI[] NormalTests;
-    public TextMeshProUGUI[] shopTests;
-    public void SetDescriptionTest(int id)
+    public void SetDescriptionTest(String id)
     {
-        chestSO.SetTestRise(id,description);
+        string text = "";
+        switch (PlayerData.instance.language)
+        {
+            case Language.中文:
+            chestSO.languageDictionary_CN.TryGetValue(id,out text);
+            description.text = text;
+            break;
+            case Language.English:
+            chestSO.languageDictionary_EN.TryGetValue(id,out text);
+            description.text = text;
+            break;
+            case Language.日本語:
+            chestSO.languageDictionary_JP.TryGetValue(id,out text);
+            description.text = text;
+            break;
+        }
+        
     }
-    public void SetNormalTests()
-    {
-        for (int i = 0; i < equipmentTests.Length; i++)
-        {
-            chestSO.SetTestRise(5+i,equipmentTests[i]);
-        }
-        for (int i = 0; i < NormalTests.Length; i++)
-        {
-            chestSO.SetTestRise(9+i,NormalTests[i]);
-        }
-        for (int i = 0; i < shopTests.Length; i++)
-        {
-            chestSO.SetTestRise(14+i,shopTests[i]);
-        }
-    }
+
     private void OnEnable() {
         chestSO.setDescriptionTestAction += SetDescriptionTest;
-        chestSO.setNormalTestAction += SetNormalTests;
+
     }
     private void OnDisable() {
         chestSO.setDescriptionTestAction -= SetDescriptionTest;
-        chestSO.setNormalTestAction -= SetNormalTests;
+
     }
 }

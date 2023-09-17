@@ -25,7 +25,6 @@ public class SetIboManager : MonoBehaviour
     private void Start() {
         for (int i = 0; i < PlayerData.instance.ibosID.Length; i++)
         {
-            Debug.Log(i);
             if(PlayerData.instance.ibosID[i] == 1)
             {
                 iboGroup[i].GetComponent<SetIboStats>().enabled = true;
@@ -39,7 +38,7 @@ public class SetIboManager : MonoBehaviour
         iboStats.SetActive(true);
         iboStats.GetComponentsInChildren<Image>()[1].sprite = enimeSO.enimeSprite;
         //设置语言
-        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = chestSO.language == 0?
+        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = PlayerData.instance.language == 0?
          enimeSO.enimeNameCN+"\n生命值:"+enimeSO.hp+"\n攻击力:"+enimeSO.act+"\n防御力:"+enimeSO.def+"\n暴击率:"+enimeSO.crit :
          enimeSO.enimeNameEN+"\nHP:"+enimeSO.hp+"\nAct:"+enimeSO.act+"\nDef:"+enimeSO.def+"\nCrit:"+enimeSO.crit;
 

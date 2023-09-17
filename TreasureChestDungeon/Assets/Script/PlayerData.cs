@@ -17,6 +17,7 @@ public class PlayerData
     public int goldQuantity;
     public int[] ibosID;
     public int[] fightibosID;
+    public Language language;
 
     //public float 
     // 私有构造函数，在类初始化的时候进行调用
@@ -35,6 +36,7 @@ public class PlayerData
         goldQuantity = 0;
         ibosID = new int[18]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
         fightibosID = new int[2]{0,0};
+        language = Language.中文;
     }
     // 使用单例模式，设置一个全局单例对象
     public static PlayerData instance = new PlayerData();

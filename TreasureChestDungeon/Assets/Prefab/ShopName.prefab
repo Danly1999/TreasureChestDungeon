@@ -212,9 +212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSO: {fileID: 11400000, guid: f040d8d2271e953478ac34f3bedb4f1b, type: 2}
-  text: {fileID: 3192576213710713209}
   goldText: {fileID: 3192576214202272944}
-  textID: 0
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3192576213710713211
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,8 +283,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u89E3\u9501\\n\u5FAA\u73AF"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 80b3d71a2e460aa439c6ee90bb93dcc7, type: 2}
-  m_sharedMaterial: {fileID: 3406966966251734986, guid: 80b3d71a2e460aa439c6ee90bb93dcc7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e832de4ae792474894b71132decf9f2, type: 2}
+  m_sharedMaterial: {fileID: -3280744028771042005, guid: 9e832de4ae792474894b71132decf9f2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -384,7 +385,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 193, y: -10}
-  m_SizeDelta: {x: 200, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3192576214202272951
 CanvasRenderer:
@@ -416,8 +417,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: $:300
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 80b3d71a2e460aa439c6ee90bb93dcc7, type: 2}
-  m_sharedMaterial: {fileID: 3406966966251734986, guid: 80b3d71a2e460aa439c6ee90bb93dcc7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e832de4ae792474894b71132decf9f2, type: 2}
+  m_sharedMaterial: {fileID: -3280744028771042005, guid: 9e832de4ae792474894b71132decf9f2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

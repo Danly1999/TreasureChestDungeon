@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+
 public class SaveManager : MonoBehaviour
 {
     string filePath; // 文件路径
@@ -10,7 +11,7 @@ public class SaveManager : MonoBehaviour
     private void Awake() 
     {
         chestSO.chestLevel = 0;
-        chestSO.language = 0;
+
 #if UNITY_EDITOR
         filePath = Application.dataPath + "/PlayerData.json"; // 文件路径
         // 从文件加载JSON字符串

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "LanguageSO", menuName = "ScriptableObject/LanguageSO", order = 0)]
-public class LanguageSO : ScriptableObject 
+public class LanguageSO
 {
-    public string[] tests;
+    public Dictionary<string, string>[] languageDictionarys = new Dictionary<string, string>[3];
+
 }
 
