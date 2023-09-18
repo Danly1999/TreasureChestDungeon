@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1db405808ae4e45b830e69826d1475, type: 3}
   m_Name: EnimeSO00
   m_EditorClassIdentifier: 
-  enimeNameCN: "\u8001\u516D"
-  enimeNameEN: Old Six
+  nameID: _TextID_oldsix
   enimeSprite: {fileID: 21300000, guid: 6163fe4c3da3bf141b88aa499b54954e, type: 3}
+  lv: 1
   hp: 100
   act: 100
   def: 10

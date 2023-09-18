@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnimeSO", menuName = "ScriptableObject/EnimeSO", order = 0)]
 public class EnimeSO : ScriptableObject 
 {
-    public string enimeNameCN;
-    public string enimeNameEN;
+    public string nameID;
     public Sprite enimeSprite;
     public int lv = 1;
     public float hp;

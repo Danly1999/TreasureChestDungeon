@@ -9,26 +9,30 @@ public class LevelDropdown : MonoBehaviour
 {
     TMP_Dropdown dropdown;
     public ChestSO chestSO;
-    public TMP_FontAsset font_CN;
-    public TMP_FontAsset font_JP;
+    public TMP_FontAsset[] font;
     private void OnEnable() {
         dropdown = GetComponent<TMP_Dropdown>();
         chestSO.dropdownAction += CheckDropdown;
+        chestSO.StartdropdownAction += SetStartDropdown;
     }
 
     private void OnDisable()
     {
         chestSO.dropdownAction -= CheckDropdown;
+        chestSO.StartdropdownAction -= SetStartDropdown;
     }
-    private void Start() {
+    public void SetStartDropdown()
+    {
         dropdown.value = (int)PlayerData.instance.language;
+    }
+    public void UpdatePlayerData()
+    {
+        PlayerData.instance.language = (Language)dropdown.value;
     }
     public void CheckDropdown()
     {
-        PlayerData.instance.language = (Language)dropdown.value;
-        //chestSO.SetDescriptionTestRise((int)chestSO.chestLevel);
-        //chestSO.SetNormalTestRise();
         TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>(true);
+        chestSO.font = font[(int)PlayerData.instance.language];
 
         for (int i = 0; i < texts.Length; i++)
         {
@@ -37,30 +41,12 @@ public class LevelDropdown : MonoBehaviour
                 if(texts[i].name.Substring(0, 7) == "_TextID")
                 {
                     string text = "";
-                    switch (PlayerData.instance.language)
+                    chestSO.languageDictionarys.TryGetValue(texts[i].gameObject.name,out text);
+                    if(texts[i].font != font[(int)PlayerData.instance.language])
                     {
-                        case Language.中文:
-                        chestSO.languageDictionary_CN.TryGetValue(texts[i].gameObject.name,out text);
-                        if(texts[i].font != font_CN)
-                        {
-                            texts[i].font = font_CN;
-                        }
-                        break;
-                        case Language.English:
-                        chestSO.languageDictionary_EN.TryGetValue(texts[i].gameObject.name,out text);
-                        if(texts[i].font != font_CN)
-                        {
-                            texts[i].font = font_CN;
-                        }
-                        break;
-                        case Language.日本語:
-                        chestSO.languageDictionary_JP.TryGetValue(texts[i].gameObject.name,out text);
-                        if(texts[i].font != font_JP)
-                        {
-                            texts[i].font = font_JP;
-                        }
-                        break;
+                        texts[i].font = font[(int)PlayerData.instance.language];
                     }
+                    
                     texts[i].text = text;
                 }
 

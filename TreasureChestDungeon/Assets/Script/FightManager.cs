@@ -25,15 +25,19 @@ public class FightManager : MonoBehaviour
     {
         enimeStats.SetActive(true);
         enimeStats.GetComponentsInChildren<Image>()[1].sprite = enimeSO.enimeSprite;
-        switch (PlayerData.instance.language)
-        {
-            case (Language)0:
-            enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = enimeSO.enimeNameCN+"\n生命值:"+enimeSO.hp+"\n攻击力:"+enimeSO.act+"\n防御力:"+enimeSO.def+"\n暴击率:"+enimeSO.crit;
-            break;
-            case (Language)1:
-            enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = enimeSO.enimeNameEN+"\nHP:"+enimeSO.hp+"\nAct:"+enimeSO.act+"\nDef:"+enimeSO.def+"\nCrit:"+enimeSO.crit;
-            break;
-        }
+        
+        string name;
+        string hp;
+        string act;
+        string def;
+        string crit;
+        chestSO.languageDictionarys.TryGetValue(enimeSO.nameID,out name);
+        chestSO.languageDictionarys.TryGetValue("_TextID_HP",out hp);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Act",out act);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Def",out def);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Crit",out crit);
+        enimeStats.GetComponentInChildren<TextMeshProUGUI>().font = chestSO.font;
+        enimeStats.GetComponentInChildren<TextMeshProUGUI>().text = name+"\n" + hp +enimeSO.hp+"\n" + act +enimeSO.act+"\n" + def +enimeSO.def+"\n" + crit +enimeSO.crit;
     }
     public void SetfightSO(EnimeSO[] enimeSOs)
     {
@@ -43,12 +47,29 @@ public class FightManager : MonoBehaviour
 
         List<EnimeSO> PlayerenimeSOs = new List<EnimeSO>();
         EnimeSO PlayerenimeSO = ScriptableObject.CreateInstance<EnimeSO>();
+        PlayerenimeSO.nameID = "_TextID_Player";
         PlayerenimeSO.hp = PlayerData.instance.stats[0];
         PlayerenimeSO.act = PlayerData.instance.stats[1];
         PlayerenimeSO.def = PlayerData.instance.stats[2];
         PlayerenimeSO.crit = PlayerData.instance.stats[3];
         PlayerenimeSO.enimeSprite = chestSO.playerSprite;
         PlayerenimeSOs.Add(PlayerenimeSO);
+        for (int i = 0; i < PlayerData.instance.fightibosID.Length; i++)
+        {
+            
+            if( PlayerData.instance.fightibosID[i] >= 0)
+            {
+
+                EnimeSO iboEnimeSO = ScriptableObject.CreateInstance<EnimeSO>();
+                iboEnimeSO.nameID = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].nameID;
+                iboEnimeSO.hp = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].hp;
+                iboEnimeSO.act = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].act;
+                iboEnimeSO.def = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].def;
+                iboEnimeSO.crit = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].crit;
+                iboEnimeSO.enimeSprite = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].enimeSprite;
+                PlayerenimeSOs.Add(iboEnimeSO);
+            }
+        }
         PlayerGroup.GetComponent<FightGroup>().enimeSOs = PlayerenimeSOs.ToArray();
         PlayerGroup.SetActive(true);
 

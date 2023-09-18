@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using OfficeOpenXml;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -16,42 +17,46 @@ public class MyData
 }
 public class LanguageSave : MonoBehaviour
 {
-    string filePath_CN; // 文件路径
-    string filePath_EN; // 文件路径
-    string filePath_JP; // 文件路径
+    string[] filePath; // 文件路径
+
     public ChestSO chestSO;
     private void Start() {
+        chestSO.StartdropdownActionRise();
+    }
+    private void OnEnable() {
+        chestSO.LordLanguageJsonAction += LoadJson;
+    }
+    private void OnDisable() {
+        chestSO.LordLanguageJsonAction -= LoadJson;
+    }
+    public void LoadJson()
+    {
         StartCoroutine(LoadJsonFiles());
     }
-IEnumerator LoadJsonFiles()
-{
-    
-    filePath_CN = Path.Combine(Application.streamingAssetsPath, "Super_LanguageDictionary.json");
-
-
-    // 创建 UnityWebRequest 对象来读取本地文件
-    UnityWebRequest www_cn = UnityWebRequest.Get(filePath_CN);
-
-
-    // 发送网络请求并等待响应
-    yield return www_cn.SendWebRequest();
-
-    if (www_cn.result == UnityWebRequest.Result.Success)
+    public IEnumerator LoadJsonFiles()
     {
-        string fileContents = www_cn.downloadHandler.text;
-        Dictionary<string, string>[] languageDictionarys = JsonConvert.DeserializeObject<LanguageSO>(fileContents).languageDictionarys;
-        chestSO.languageDictionary_CN = languageDictionarys[0];
-        chestSO.languageDictionary_EN = languageDictionarys[1];
-        chestSO.languageDictionary_JP = languageDictionarys[2];
-        //Debug.Log("从本地文件中读取的内容：" + fileContents);
+        filePath = new string[3];
+        filePath[0] = Path.Combine(Application.streamingAssetsPath, "LanguageDictionary_CN.json");
+        filePath[1] = Path.Combine(Application.streamingAssetsPath, "LanguageDictionary_EN.json");
+        filePath[2] = Path.Combine(Application.streamingAssetsPath, "LanguageDictionary_JP.json");
+        // 创建 UnityWebRequest 对象来读取本地文件
+        UnityWebRequest www = UnityWebRequest.Get(filePath[(int)PlayerData.instance.language]);
+
+        // 发送网络请求并等待响应
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            string fileContents = www.downloadHandler.text;
+            chestSO.languageDictionarys = JsonConvert.DeserializeObject<LanguageSO>(fileContents).languageDictionarys;
+
+
+            //Debug.Log("从本地文件中读取的内容：" + fileContents);
+        }
+        // 记得释放 UnityWebRequest 对象
+        www.Dispose();
+        chestSO.DropdownRise();
     }
-
-
-    // 记得释放 UnityWebRequest 对象
-    www_cn.Dispose();
-
-    chestSO.DropdownRise();
-}
 
 
     public void Save()

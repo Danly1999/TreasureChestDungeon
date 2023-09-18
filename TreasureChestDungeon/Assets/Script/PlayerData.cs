@@ -35,7 +35,7 @@ public class PlayerData
         chestLevel = 0;
         goldQuantity = 0;
         ibosID = new int[18]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        fightibosID = new int[2]{0,0};
+        fightibosID = new int[2]{-1,-1};
         language = Language.中文;
     }
     // 使用单例模式，设置一个全局单例对象

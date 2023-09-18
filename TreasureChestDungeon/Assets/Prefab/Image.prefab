@@ -709,6 +709,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3771810857002688425, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771810857002688425, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24448201
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771810857002688425, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771810857002688425, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.55508476
+      objectReference: {fileID: 0}
     - target: {fileID: 7510559465124958146, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
       propertyPath: m_Name
       value: Partical
@@ -716,6 +732,22 @@ PrefabInstance:
     - target: {fileID: 7510559465124958146, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623379648220852355, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623379648220852355, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.36320752
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623379648220852355, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.779932
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623379648220852355, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bcd8640e624b34eb904ccdda7ceee8, type: 3}

@@ -21,8 +21,7 @@ public class FightGroup : MonoBehaviour
         {
             GameObject enime = Instantiate(perfab, gameObject.transform);
             EnimeSO enimeSO = ScriptableObject.CreateInstance<EnimeSO>();
-            enimeSO.enimeNameCN = enimeSOs[i].enimeNameCN;
-            enimeSO.enimeNameEN = enimeSOs[i].enimeNameEN;
+            enimeSO.nameID = enimeSOs[i].nameID;
             enimeSO.enimeSprite = enimeSOs[i].enimeSprite;
             enimeSO.hp          = enimeSOs[i].hp         ;
             enimeSO.act         = enimeSOs[i].act        ;

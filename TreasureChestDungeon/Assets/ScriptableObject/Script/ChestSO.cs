@@ -43,13 +43,16 @@ public class ChestSO : ScriptableObject {
     public UnityAction resetEnimeGroupAction;
     public UnityAction goldAction;
     public UnityAction<int> CreateIboAction;
+    public UnityAction StartdropdownAction;
+    public UnityAction LordLanguageJsonAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
     public Sprite playerSprite;
-    public Dictionary<string, string> languageDictionary_CN = new Dictionary<string, string>();
-    public Dictionary<string, string> languageDictionary_EN = new Dictionary<string, string>();
-    public Dictionary<string, string> languageDictionary_JP = new Dictionary<string, string>();
+    public Dictionary<string, string> languageDictionarys = new Dictionary<string, string>();
+    public TMP_FontAsset font;
+    public IboSO iboSO;
+
     public void ChestRise()
     {
         action.Invoke();
@@ -148,6 +151,15 @@ public class ChestSO : ScriptableObject {
     public void CreateIboRise(int iboID)
     {
         CreateIboAction.Invoke(iboID);
+    }
+    public void StartdropdownActionRise()
+    {
+        StartdropdownAction.Invoke();
+    }
+    
+    public void LordLanguageJsonRise()
+    {
+        LordLanguageJsonAction.Invoke();
     }
     
     IEnumerator DelayedExecute()

@@ -36,10 +36,10 @@ public class ExcelToJsonEditorWindow : EditorWindow
     // 按钮点击事件的处理方法
  void ReadExcel() {
         string outPutDir = "Assets/Editor/Dictionary.xlsx";
-        LanguageSO languageSO = new LanguageSO();
-        Dictionary<string, string> languageDictionary_cn = new Dictionary<string, string>();
-        Dictionary<string, string> languageDictionary_en = new Dictionary<string, string>();
-        Dictionary<string, string> languageDictionary_jp = new Dictionary<string, string>();
+        LanguageSO languageSO_cn = new LanguageSO();
+        LanguageSO languageSO_en = new LanguageSO();
+        LanguageSO languageSO_jp = new LanguageSO();
+
         using ( ExcelPackage package = new ExcelPackage(new FileStream(outPutDir, FileMode.Open)) )
         {
             for ( int i = 1; i <= package.Workbook.Worksheets.Count; ++i )
@@ -57,18 +57,19 @@ public class ExcelToJsonEditorWindow : EditorWindow
                         value_jp = value_jp.Replace("\\n","\n");                   
                         if ( key != null && value_cn != null)
                         {
-                            languageDictionary_cn.Add(key,value_cn);
-                            languageDictionary_en.Add(key,value_en);
-                            languageDictionary_jp.Add(key,value_jp);
+                            languageSO_cn.languageDictionarys.Add(key,value_cn);
+                            languageSO_en.languageDictionarys.Add(key,value_en);
+                            languageSO_jp.languageDictionarys.Add(key,value_jp);
                         }
                 }
             }
-            languageSO.languageDictionarys[0] = languageDictionary_cn;
-            languageSO.languageDictionarys[1] = languageDictionary_en;
-            languageSO.languageDictionarys[2] = languageDictionary_jp;
-            string json = JsonConvert.SerializeObject(languageSO);
+            string json_cn = JsonConvert.SerializeObject(languageSO_cn);
+            string json_en = JsonConvert.SerializeObject(languageSO_en);
+            string json_jp = JsonConvert.SerializeObject(languageSO_jp);
             // 将JSON字符串保存到文件
-            File.WriteAllText(Application.streamingAssetsPath + "/Super_LanguageDictionary.json", json);
+            File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_CN.json", json_cn);
+            File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_EN.json", json_en);
+            File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_JP.json", json_jp);
         }
     }
 }

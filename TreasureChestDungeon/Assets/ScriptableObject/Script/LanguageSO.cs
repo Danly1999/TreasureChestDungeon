@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LanguageSO
 {
-    public Dictionary<string, string>[] languageDictionarys = new Dictionary<string, string>[3];
+    public Dictionary<string, string> languageDictionarys = new Dictionary<string, string>();
 
 }
 

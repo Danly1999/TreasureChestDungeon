@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SetIboManager : MonoBehaviour
 {
     public ChestSO chestSO;
-    public IboSO iboSO;
     public GameObject iboStats;
     public GameObject[] iboGroup;
     public GameObject ibo;
@@ -38,9 +37,18 @@ public class SetIboManager : MonoBehaviour
         iboStats.SetActive(true);
         iboStats.GetComponentsInChildren<Image>()[1].sprite = enimeSO.enimeSprite;
         //设置语言
-        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = PlayerData.instance.language == 0?
-         enimeSO.enimeNameCN+"\n生命值:"+enimeSO.hp+"\n攻击力:"+enimeSO.act+"\n防御力:"+enimeSO.def+"\n暴击率:"+enimeSO.crit :
-         enimeSO.enimeNameEN+"\nHP:"+enimeSO.hp+"\nAct:"+enimeSO.act+"\nDef:"+enimeSO.def+"\nCrit:"+enimeSO.crit;
+        string name;
+        string hp;
+        string act;
+        string def;
+        string crit;
+        chestSO.languageDictionarys.TryGetValue(enimeSO.nameID,out name);
+        chestSO.languageDictionarys.TryGetValue("_TextID_HP",out hp);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Act",out act);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Def",out def);
+        chestSO.languageDictionarys.TryGetValue("_TextID_Crit",out crit);
+        iboStats.GetComponentInChildren<TextMeshProUGUI>().font = chestSO.font;
+        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = name+"\n" + hp +enimeSO.hp+"\n" + act +enimeSO.act+"\n" + def +enimeSO.def+"\n" + crit +enimeSO.crit;
 
     }
     public void CreateIbo(int ibosID)

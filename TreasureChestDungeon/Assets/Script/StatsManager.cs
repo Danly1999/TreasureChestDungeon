@@ -8,15 +8,11 @@ using UnityEngine.UI;
 public class StatsManager : MonoBehaviour
 {
     public ChestSO chestSO;
-    RectTransform rectTransform;
-    RectTransform starRectTransform;
     public Vector3 vector3;
     public Vector3 Starvector3;
     public TextMeshProUGUI[] text;
     private void OnEnable() 
     {
-        rectTransform = GetComponent<RectTransform>();
-        starRectTransform = rectTransform;
         for (int i = 0; i < PlayerData.instance.stats.Length; i++)
         {
             text[i].text = PlayerData.instance.stats[i].ToString();
