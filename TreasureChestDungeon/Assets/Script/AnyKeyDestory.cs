@@ -1,27 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnyKeyDestory : MonoBehaviour
 {
     public Canvas canvas;
     public ChestSO chestSO;
-    void Start()
+    public UnityEvent unityEvent;
+    UnityAction unityAction;
+    private void OnEnable() 
     {
-
+        chestSO.action += OutFunc;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable() 
     {
-        if(Input.anyKey)
+        chestSO.action -= OutFunc;
+        this.unityAction -= OutFunc;
+    }
+    public void InputAction(UnityAction unityAction)
+    {
+        this.unityAction = unityAction;
+        this.unityAction += OutFunc;
+    }
+    public void OutFunc()
+    {
+        if(canvas)
         {
-            if(canvas)
-            {
-                canvas.sortingLayerName = "Default";
-                chestSO.SetBlurRise(false);
-            }
-            gameObject.SetActive(false);
+            canvas.sortingLayerName = "Default";
+            chestSO.SetBlurRise(false);
         }
+        gameObject.SetActive(false);
     }
+    // Update is called once per frame
+
 }
