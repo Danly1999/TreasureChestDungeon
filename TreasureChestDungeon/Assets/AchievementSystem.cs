@@ -9,6 +9,7 @@ public class AchievementSystem : MonoBehaviour
 {
     Button button;
     public ChestSO chestSO;
+    public GameObject particel;
     public int actionID;
     public int addChest;
     public void OnEnable() {
@@ -27,6 +28,7 @@ public class AchievementSystem : MonoBehaviour
             chestSO.action -= Achievement;
             button.onClick.AddListener(AddChest);
             button.interactable = true;
+            particel.SetActive(true);
         }
     }
     public void AddChest()

@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 37610846}
   - component: {fileID: 37610845}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3667,7 +3667,7 @@ GameObject:
   - component: {fileID: 365691705}
   - component: {fileID: 365691704}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,7 +3732,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2128136707}
+  m_TargetGraphic: {fileID: 365691705}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -14490,7 +14490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7401364, b: 0.6466714, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21828,7 +21828,7 @@ GameObject:
   - component: {fileID: 2128136707}
   - component: {fileID: 2128136706}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22651,6 +22651,10 @@ PrefabInstance:
     - target: {fileID: 2498921557701365125, guid: b7b8f97e824d93244b58a90669cbd194, type: 3}
       propertyPath: m_Name
       value: Reward
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498921557767981450, guid: b7b8f97e824d93244b58a90669cbd194, type: 3}
+      propertyPath: m_Name
+      value: _TextID_Reward00
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7b8f97e824d93244b58a90669cbd194, type: 3}

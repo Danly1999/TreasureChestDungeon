@@ -6,6 +6,12 @@ Shader "URP/ParticalShader"
         _MaskTex ("MaskTex", 2D) = "white" {}
         _NoiseScale ("Scale.x,Scale.y,Speed.x,Speed.y", vector) = (0,0,0,0)
         [Enum(UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Int) = 1
+        _StencilComp ("Stencil Comparison", Float) = 8
+        _Stencil ("Stencil ID", Float) = 0
+        _StencilOp ("Stencil Operation", Float) = 0
+        _StencilWriteMask ("Stencil Write Mask", Float) = 255
+        _StencilReadMask ("Stencil Read Mask", Float) = 255
+        _ColorMask ("Color Mask", Float) = 15
     }
     SubShader
     {
