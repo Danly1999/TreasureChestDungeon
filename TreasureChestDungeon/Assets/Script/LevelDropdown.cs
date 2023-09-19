@@ -23,7 +23,13 @@ public class LevelDropdown : MonoBehaviour
     }
     public void SetStartDropdown()
     {
-        dropdown.value = (int)PlayerData.instance.language;
+        if(dropdown.value != (int)PlayerData.instance.language)
+        {
+            dropdown.value = (int)PlayerData.instance.language;
+        }else
+        {
+            chestSO.LordLanguageJsonRise();
+        }
     }
     public void UpdatePlayerData()
     {

@@ -45,6 +45,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<int> CreateIboAction;
     public UnityAction StartdropdownAction;
     public UnityAction LordLanguageJsonAction;
+    public UnityAction chestQuantityTextAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
@@ -55,8 +56,15 @@ public class ChestSO : ScriptableObject {
 
     public void ChestRise()
     {
-        action.Invoke();
-        ExpRise(PlayerData.instance.level*100);
+        if(PlayerData.instance.chestQuantity>0)
+        {
+            PlayerData.instance.chestQuantity--;
+            PlayerData.instance.chestNub++;
+            chestQuantityTextRise();
+            action.Invoke();
+            ExpRise(PlayerData.instance.level * 100);
+
+        }
     }
     public void LoopChestRise()
     {
@@ -161,7 +169,12 @@ public class ChestSO : ScriptableObject {
     {
         LordLanguageJsonAction.Invoke();
     }
+    public void chestQuantityTextRise()
+    {
+        chestQuantityTextAction.Invoke();
+    }
     
+
     IEnumerator DelayedExecute()
     {
         yield return new WaitForSeconds(0.1f);

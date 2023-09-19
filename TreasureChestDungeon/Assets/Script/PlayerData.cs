@@ -11,6 +11,7 @@ public class PlayerData
     public int[] EquipmentSpriteID;
     public int[] EquipmentLV;
     public int[] EquipmentAchievement;
+    public int chestNub;
     public int fightSOID;
     public int chestQuantity;
     public int chestLevel;
@@ -30,6 +31,7 @@ public class PlayerData
         EquipmentSpriteID = new int[4]{-1,-1,-1,-1};
         EquipmentLV = new int[4]{0,0,0,0};
         EquipmentAchievement = new int[4]{0,0,0,0};
+        chestNub = 0;
         fightSOID = 0;
         chestQuantity = 300;
         chestLevel = 0;

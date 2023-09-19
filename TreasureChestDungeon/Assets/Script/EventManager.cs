@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
@@ -11,19 +13,29 @@ public class EventManager : MonoBehaviour
     public UnityEvent checkEvent;
     public UnityEvent OnEnaEvent;
     public GameObject black;
+    public TextMeshProUGUI chestText;
     private void OnEnable() {
         chestSO.canLoop = false;
         chestSO.action += eve;
+        chestSO.chestQuantityTextAction += ChestText;
         chestSO.checkAction += checkChest;
         chestSO.highLightAction += HighLight;
         OnEnaEvent.Invoke();
     }
     private void OnDisable() {
         chestSO.action -= eve;
+        chestSO.chestQuantityTextAction -= ChestText;
     }
     private void eve()
     {
         unityEvent.Invoke();
+    }
+    void ChestText()
+    {
+        string text;
+        chestSO.languageDictionarys.TryGetValue("_TextID_ChestQuantity", out text);
+        Debug.Log(text);
+        chestText.text = text + PlayerData.instance.chestQuantity;
     }
     private void HighLight(Canvas canvas)
     {
