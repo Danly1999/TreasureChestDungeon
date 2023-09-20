@@ -16,13 +16,10 @@ public class AchievementFightSystem : MonoBehaviour
 
     public void Start()
     {
-        if (PlayerData.instance.achievementID > achievementID)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
+
         button = GetComponent<Button>();
         chestSO.goldAction += Achievement;
+        Achievement();
     }
     private void OnDisable()
     {
@@ -56,6 +53,7 @@ public class AchievementFightSystem : MonoBehaviour
     public void AddChest()
     {
         PlayerData.instance.achievementID = achievementID + 1;
+        chestSO.AchievementRise();
         PlayerData.instance.chestQuantity += addChest;
         chestSO.chestQuantityTextRise();
         gameObject.SetActive(false);

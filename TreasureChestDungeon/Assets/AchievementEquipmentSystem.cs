@@ -15,13 +15,10 @@ public class AchievementEquipmentSystem : MonoBehaviour
     private int[] ints = new int[4] { 0, 0, 0, 0 };
     public int achievementID;
     public void Start() {
-        if (PlayerData.instance.achievementID > achievementID)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
+
         button = GetComponent<Button>();
         chestSO.equipmentAction += Achievement;
+        Achievement();
     }
     private void OnDisable()
     {
@@ -49,6 +46,7 @@ public class AchievementEquipmentSystem : MonoBehaviour
     public void AddChest()
     {
         PlayerData.instance.achievementID = achievementID + 1;
+        chestSO.AchievementRise();
         PlayerData.instance.chestQuantity += addChest;
         chestSO.chestQuantityTextRise();
         gameObject.SetActive(false);

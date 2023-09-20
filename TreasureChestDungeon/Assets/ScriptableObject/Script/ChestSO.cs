@@ -46,6 +46,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction StartdropdownAction;
     public UnityAction LordLanguageJsonAction;
     public UnityAction chestQuantityTextAction;
+    public UnityAction achievementRiseAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
@@ -172,6 +173,10 @@ public class ChestSO : ScriptableObject {
     public void chestQuantityTextRise()
     {
         chestQuantityTextAction.Invoke();
+    }
+    public void AchievementRise()
+    {
+        achievementRiseAction.Invoke();
     }
     
 
