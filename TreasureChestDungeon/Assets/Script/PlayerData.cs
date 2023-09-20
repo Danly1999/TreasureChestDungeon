@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerData
 {
@@ -17,6 +18,7 @@ public class PlayerData
     public int chestLevel;
     public int goldQuantity;
     public int[] ibosID;
+    public int achievementID;
     public int[] fightibosID;
     public Language language;
 
@@ -37,6 +39,7 @@ public class PlayerData
         chestLevel = 0;
         goldQuantity = 0;
         ibosID = new int[18]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        achievementID = 0;
         fightibosID = new int[2]{-1,-1};
         language = Language.中文;
     }

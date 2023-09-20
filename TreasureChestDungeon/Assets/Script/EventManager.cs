@@ -34,7 +34,6 @@ public class EventManager : MonoBehaviour
     {
         string text;
         chestSO.languageDictionarys.TryGetValue("_TextID_ChestQuantity", out text);
-        Debug.Log(text);
         chestText.text = text + PlayerData.instance.chestQuantity;
     }
     private void HighLight(Canvas canvas)

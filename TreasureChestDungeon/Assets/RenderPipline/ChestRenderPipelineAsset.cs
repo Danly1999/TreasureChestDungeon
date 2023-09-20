@@ -50,7 +50,7 @@ public class ChestRenderPipeline : RenderPipeline
             if(isBlur)
             {
                 CommandBuffer cmdSetRender = new CommandBuffer(){name = "SetRenderTexture"};
-                RenderTextureDescriptor descriptor = new RenderTextureDescriptor(camera.pixelWidth/6,camera.pixelHeight/6,RenderTextureFormat.ARGB32,24,0);
+                RenderTextureDescriptor descriptor = new RenderTextureDescriptor(camera.pixelWidth/6,camera.pixelHeight/6,RenderTextureFormat.RGB565,0,0);
                 cmdSetRender.GetTemporaryRT(renderTargetHandleRight.id,descriptor,FilterMode.Bilinear);
                 cmdSetRender.GetTemporaryRT(renderTargetHandleLeft.id,descriptor,FilterMode.Bilinear);
                 cmdSetRender.SetRenderTarget(renderTargetHandleRight.id);

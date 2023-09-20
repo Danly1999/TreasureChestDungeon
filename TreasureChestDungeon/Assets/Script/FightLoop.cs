@@ -12,10 +12,10 @@ public class FightLoop : MonoBehaviour
     public GameObject blackGround;
     public GameObject playersGroup;
     public GameObject enimesGroup;
-    public GameObject partical;
-    public GameObject diePartical;
-    public GameObject PaPartical;
-    public GameObject BoomPaPartical;
+    //public GameObject partical;
+    //public GameObject diePartical;
+    //public GameObject PaPartical;
+    //public GameObject BoomPaPartical;
     public List<GameObject> players;
     public List<GameObject> enimes;
     public List<GameObject> all;
@@ -143,8 +143,8 @@ public class FightLoop : MonoBehaviour
             //change scene;
             pass[0].SetActive(false);
             PlayerData.instance.goldQuantity += 50*(PlayerData.instance.fightSOID+1)/2;
-            chestSO.SetGoldRise();
             PlayerData.instance.fightSOID = Mathf.Min(PlayerData.instance.fightSOID+1,chestSO.fightSOs.Length-1);
+            chestSO.SetGoldRise();
             chestSO.ResetEnimeGroupRise();
         }
         blackGround.SetActive(false);

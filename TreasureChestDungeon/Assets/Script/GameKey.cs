@@ -30,6 +30,7 @@ public class GameKey : MonoBehaviour
         }
         if(checkID == 4)
         {
+            chestSO.equipmentAction -= Check;
             obj.SetActive(true);
         }
 
