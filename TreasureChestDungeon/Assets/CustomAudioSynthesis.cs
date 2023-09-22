@@ -1,5 +1,8 @@
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+
+using System;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 [RequireComponent(typeof(AudioSource))]
 public class CustomAudioSynthesis : MonoBehaviour
@@ -8,7 +11,8 @@ public class CustomAudioSynthesis : MonoBehaviour
     public float frequency = 440f; // 锯齿波的频率（Hz）
     public float amplitude = 0.5f; // 锯齿波的振幅
     private bool isPlaying = false;
-
+    float range;
+    private System.Random random = new System.Random();
     void Start()
     {
 
@@ -22,6 +26,7 @@ public class CustomAudioSynthesis : MonoBehaviour
         // 按下鼠标左键开始播放音效
         if (Input.GetMouseButtonDown(0) && !isPlaying)
         {
+            range = UnityEngine.Random.Range(0f, 100f);
             isPlaying = true;
             audioSource.Play();
         }
@@ -33,7 +38,10 @@ public class CustomAudioSynthesis : MonoBehaviour
             audioSource.Stop();
         }
     }
-
+    float Map(double value, double fromSource, double toSource, double fromTarget, double toTarget)
+    {
+        return (float)(fromTarget + (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget));
+    }
     // 在 OnAudioFilterRead 方法中合成锯齿波音效
     void OnAudioFilterRead(float[] data, int channels)
     {
@@ -42,14 +50,11 @@ public class CustomAudioSynthesis : MonoBehaviour
             for (int i = 0; i < data.Length; i += channels)
             {
                 // 计算锯齿波样本值
-                float t = (float)i / data.Length; // 标准化时间 [0, 1]
-                float sample = amplitude * (2f * (t - Mathf.Floor(t + 0.5f)));
+                float randomValue = Map(random.NextDouble(), 0, 1, -1, 1);
 
-                // 将音频数据写入输出
-                for (int channel = 0; channel < channels; channel++)
-                {
-                    data[i + channel] = sample;
-                }
+                // 将随机值应用到音频数据
+                data[i] = randomValue;
+
             }
         }
         else
