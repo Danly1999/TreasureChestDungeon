@@ -20,23 +20,24 @@ public class LevelOnEnable : MonoBehaviour
         switch (chestSO.equipmentName)
         {
             case EquipmentName.UpperGarment:
-                targetStats = PlayerData.instance.level*1000*levelSOs[chestSO.levelStatic].scale;
+                //targetStats = PlayerData.instance.level*1000*levelSOs[chestSO.levelStatic].scale;
                 sourceStats = PlayerData.instance.stats[0];
                 break;
             case EquipmentName.Weapon:
-                targetStats = PlayerData.instance.level*50*levelSOs[chestSO.levelStatic].scale;
+                //targetStats = PlayerData.instance.level*50*levelSOs[chestSO.levelStatic].scale;
                 sourceStats = PlayerData.instance.stats[1];
                 break;
             case EquipmentName.LowerGarment:
-                targetStats = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
+                //targetStats = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
                 sourceStats = PlayerData.instance.stats[2];
                 break;
             case EquipmentName.Accessory:
-                targetStats = PlayerData.instance.level * levelSOs[chestSO.levelStatic].scale;
+                //targetStats = PlayerData.instance.level * levelSOs[chestSO.levelStatic].scale;
                 sourceStats = PlayerData.instance.stats[3];
                 break;
 
         }
+        targetStats = chestSO.EquipmentQuantity(chestSO.equipmentName);
 
         text.text = "LV : "+ PlayerData.instance.level +"\n"+ sourceStats + "--> -->"+targetStats;
         if(sourceStats>targetStats)

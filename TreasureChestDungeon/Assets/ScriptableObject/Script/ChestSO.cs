@@ -25,6 +25,7 @@ public class ChestSO : ScriptableObject {
     public bool canLoop;
     public FightSO[] fightSOs;
     public LanguageSO[] languageSOs;
+    public LevelSO[] levelSOs;
     public UnityAction action;
     public UnityAction checkAction;
     public UnityAction dropdownAction;
@@ -47,6 +48,8 @@ public class ChestSO : ScriptableObject {
     public UnityAction LordLanguageJsonAction;
     public UnityAction chestQuantityTextAction;
     public UnityAction achievementRiseAction;
+    public UnityAction<bool> EnbaChestAction;
+    public UnityAction chestLevelUpAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
@@ -64,8 +67,14 @@ public class ChestSO : ScriptableObject {
             chestQuantityTextRise();
             action.Invoke();
             ExpRise(PlayerData.instance.level * 100);
-
+        }else
+        {
+            EnbaChestRise(true);
         }
+    }
+    public void EnbaChestRise(bool enb)
+    {
+        EnbaChestAction.Invoke(enb);
     }
     public void LoopChestRise()
     {
@@ -178,7 +187,31 @@ public class ChestSO : ScriptableObject {
     {
         achievementRiseAction.Invoke();
     }
-    
+    public float EquipmentQuantity(EquipmentName equipment)
+    {
+        float outQuantity = 0;
+        switch (equipmentName)
+        {
+            case EquipmentName.UpperGarment:
+                outQuantity = PlayerData.instance.level * 500 * levelSOs[levelStatic].scale;
+                break;
+            case EquipmentName.Weapon:
+                outQuantity = PlayerData.instance.level * 50 * levelSOs[levelStatic].scale;
+                break;
+            case EquipmentName.LowerGarment:
+                outQuantity = PlayerData.instance.level * 50 * levelSOs[levelStatic].scale;
+                break;
+            case EquipmentName.Accessory:
+                outQuantity = PlayerData.instance.level * levelSOs[levelStatic].scale;
+                break;
+
+        }
+        return outQuantity;
+    }
+    public void ChestLevelUpRise()
+    {
+        chestLevelUpAction.Invoke();
+    }
 
     IEnumerator DelayedExecute()
     {

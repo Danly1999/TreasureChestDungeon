@@ -13,18 +13,46 @@ public class EventManager : MonoBehaviour
     public UnityEvent checkEvent;
     public UnityEvent OnEnaEvent;
     public GameObject black;
+    public Button button;
     public TextMeshProUGUI chestText;
+    public TextMeshProUGUI chestLevelText;
+    public GameObject openKey;
+    public GameObject closeKey;
     private void OnEnable() {
         chestSO.canLoop = false;
         chestSO.action += eve;
         chestSO.chestQuantityTextAction += ChestText;
         chestSO.checkAction += checkChest;
         chestSO.highLightAction += HighLight;
+        chestSO.EnbaChestAction += buttonEnb;
         OnEnaEvent.Invoke();
+        chestSO.chestLevelUpAction += ChestLevelUp;
+        CloseKey();
+        chestLevelText.text = "LV : " + PlayerData.instance.chestLevel;
     }
     private void OnDisable() {
         chestSO.action -= eve;
         chestSO.chestQuantityTextAction -= ChestText;
+        chestSO.EnbaChestAction -= buttonEnb;
+        chestSO.chestLevelUpAction -= ChestLevelUp;
+    }
+    public void ChestLevelUp()
+    {
+        PlayerData.instance.chestLevel++;
+        chestLevelText.text = "LV : " + PlayerData.instance.chestLevel;
+    }
+    public void CloseKey()
+    {
+        if(PlayerData.instance.achievementID>=5)
+        {
+            openKey.SetActive(true);
+            closeKey.SetActive(false);
+
+        }
+    }
+    public void buttonEnb(bool ena)
+    {
+        button.enabled = ena;
     }
     private void eve()
     {

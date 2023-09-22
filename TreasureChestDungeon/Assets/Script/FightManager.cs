@@ -59,15 +59,7 @@ public class FightManager : MonoBehaviour
             
             if( PlayerData.instance.fightibosID[i] >= 0)
             {
-
-                EnimeSO iboEnimeSO = ScriptableObject.CreateInstance<EnimeSO>();
-                iboEnimeSO.nameID = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].nameID;
-                iboEnimeSO.hp = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].hp;
-                iboEnimeSO.act = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].act;
-                iboEnimeSO.def = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].def;
-                iboEnimeSO.crit = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].crit;
-                iboEnimeSO.enimeSprite = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]].enimeSprite;
-                PlayerenimeSOs.Add(iboEnimeSO);
+                PlayerenimeSOs.Add(chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]]);
             }
         }
         PlayerGroup.GetComponent<FightGroup>().enimeSOs = PlayerenimeSOs.ToArray();

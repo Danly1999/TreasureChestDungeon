@@ -12,6 +12,15 @@ public class AnyKeyDestory : MonoBehaviour
     private void OnEnable() 
     {
         chestSO.action += OutFunc;
+        
+    }
+    private void Start()
+    {
+        if (PlayerData.instance.chestQuantity == 0)
+        {
+            chestSO.chestQuantityTextRise();
+            OutFunc();
+        }
     }
     private void OnDisable() 
     {
@@ -30,6 +39,7 @@ public class AnyKeyDestory : MonoBehaviour
             canvas.sortingLayerName = "Default";
             chestSO.SetBlurRise(false);
         }
+        this.unityAction -= OutFunc;
         gameObject.SetActive(false);
     }
     // Update is called once per frame

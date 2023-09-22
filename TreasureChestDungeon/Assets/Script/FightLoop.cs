@@ -131,6 +131,12 @@ public class FightLoop : MonoBehaviour
                 all.Add(obj);
 
             }
+            if (players.Count == 0)
+            {
+                blackGround.SetActive(false);
+                returnButton.onClick.Invoke();
+                 yield return null;
+            }
         }
         pass[GroupID].SetActive(true);
         if(pass.Length-1>GroupID)

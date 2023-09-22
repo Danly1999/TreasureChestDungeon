@@ -58,19 +58,20 @@ public class EquipmentSystem : MonoBehaviour
             image.sprite = levelSOs[chestSO.levelStatic].sprites[(int)equipmentName];
             lv = PlayerData.instance.level;
             text.text = "LV : " + lv;
+            float targetStats = chestSO.EquipmentQuantity(chestSO.equipmentName);
             switch (equipmentName)
             {
                 case EquipmentName.UpperGarment:
-                    PlayerData.instance.stats[0] = PlayerData.instance.level*1000*levelSOs[chestSO.levelStatic].scale;
+                    PlayerData.instance.stats[0] = targetStats;
                     break;
                 case EquipmentName.Weapon:
-                    PlayerData.instance.stats[1] = PlayerData.instance.level*50*levelSOs[chestSO.levelStatic].scale;
+                    PlayerData.instance.stats[1] = targetStats;
                     break;
                 case EquipmentName.LowerGarment:
-                    PlayerData.instance.stats[2] = PlayerData.instance.level*20*levelSOs[chestSO.levelStatic].scale;
+                    PlayerData.instance.stats[2] = targetStats;
                     break;
                 case EquipmentName.Accessory:
-                    PlayerData.instance.stats[3] = PlayerData.instance.level * levelSOs[chestSO.levelStatic].scale;
+                    PlayerData.instance.stats[3] = targetStats;
                     break;
 
             }

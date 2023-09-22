@@ -26,21 +26,27 @@ public class ExcelToJsonEditorWindow : EditorWindow
         GUILayout.Label("ExcelToJsonEditorWindow", EditorStyles.boldLabel);
 
         // 添加一个按钮
-        if (GUILayout.Button("Click Me"))
+        if (GUILayout.Button("ReadLanguageExcel"))
         {
             // 按下按钮后执行的方法
-            ReadExcel();
+            ReadLanguageExcel();
         }
+        if (GUILayout.Button("ReadSceneExcel"))
+        {
+            // 按下按钮后执行的方法
+            ReadSceneExcel();
+        }
+        
     }
 
     // 按钮点击事件的处理方法
- void ReadExcel() {
+    void ReadLanguageExcel() {
         string outPutDir = "Assets/Editor/Dictionary.xlsx";
         LanguageSO languageSO_cn = new LanguageSO();
         LanguageSO languageSO_en = new LanguageSO();
         LanguageSO languageSO_jp = new LanguageSO();
 
-        using ( ExcelPackage package = new ExcelPackage(new FileStream(outPutDir, FileMode.Open)) )
+        using ( ExcelPackage package = new ExcelPackage(new FileStream(outPutDir, FileMode.Open, FileAccess.Read, FileShare.Read)) )
         {
             for ( int i = 1; i <= package.Workbook.Worksheets.Count; ++i )
             {
@@ -70,6 +76,28 @@ public class ExcelToJsonEditorWindow : EditorWindow
             File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_CN.json", json_cn);
             File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_EN.json", json_en);
             File.WriteAllText(Application.streamingAssetsPath + "/LanguageDictionary_JP.json", json_jp);
+        }
+    }
+    void ReadSceneExcel()
+    {
+        string outPutDir = "Assets/Editor/FightSence.xlsx";
+        //FightSO fightSO = new FightSO();
+
+        using (ExcelPackage package = new ExcelPackage(new FileStream(outPutDir, FileMode.Open,FileAccess.Read,FileShare.Read)))
+        {
+
+            for (int i = 1; i <= package.Workbook.Worksheets.Count; ++i)
+            {
+                ExcelWorksheet sheet = package.Workbook.Worksheets[i];
+                for (int j = sheet.Dimension.Start.Row + 1, k = sheet.Dimension.End.Row; j <= k; j++)
+                {
+                    string key = sheet.GetValue(j, 1).ToString();
+                    Debug.Log(key);
+                }
+            }
+
+
+
         }
     }
 }

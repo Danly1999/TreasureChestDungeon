@@ -23,10 +23,10 @@ public class FightGroup : MonoBehaviour
             EnimeSO enimeSO = ScriptableObject.CreateInstance<EnimeSO>();
             enimeSO.nameID = enimeSOs[i].nameID;
             enimeSO.enimeSprite = enimeSOs[i].enimeSprite;
-            enimeSO.hp          = enimeSOs[i].hp         ;
-            enimeSO.act         = enimeSOs[i].act        ;
-            enimeSO.def         = enimeSOs[i].def        ;
-            enimeSO.crit        = enimeSOs[i].crit       ;
+            enimeSO.hp          = enimeSOs[i].hp         * (title == 0? 1 : 1+(PlayerData.instance.fightSOID*0.5f));
+            enimeSO.act         = enimeSOs[i].act        * (title == 0? 1 : 1+(PlayerData.instance.fightSOID*0.5f));
+            enimeSO.def         = enimeSOs[i].def        * (title == 0? 1 : 1+(PlayerData.instance.fightSOID*0.5f));
+            enimeSO.crit        = enimeSOs[i].crit       * (title == 0? 1 : 1+(PlayerData.instance.fightSOID*0.5f));
             enime.GetComponent<SetEnime>().enimeSO = enimeSO;
             enime.GetComponent<Image>().sprite = enimeSOs[i].enimeSprite;
             enime.GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,Random.Range(-10f,10f)));

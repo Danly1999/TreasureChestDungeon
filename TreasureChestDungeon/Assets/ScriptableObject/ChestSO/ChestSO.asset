@@ -17,6 +17,12 @@ MonoBehaviour:
   fightSOs:
   - {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
   - {fileID: 11400000, guid: 5dc74481405b8e9479adec4e3356d1c0, type: 2}
+  levelSOs:
+  - {fileID: 11400000, guid: c928d9f63c002544a817e595fb8b717d, type: 2}
+  - {fileID: 11400000, guid: 39a9e761eac751544b93b55830d86027, type: 2}
+  - {fileID: 11400000, guid: 19dc76a95e2d8f94a880443baad88d4c, type: 2}
+  - {fileID: 11400000, guid: 10b064faf094a1040b52c7e918a7b4ee, type: 2}
+  - {fileID: 11400000, guid: 89042f7c9d1af7b4593bb3b3dbe93054, type: 2}
   levelStatic: 0
   equipmentName: 1
   chestLevelSO:

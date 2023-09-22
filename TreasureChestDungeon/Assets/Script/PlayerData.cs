@@ -35,7 +35,7 @@ public class PlayerData
         EquipmentAchievement = new int[4]{0,0,0,0};
         chestNub = 0;
         fightSOID = 0;
-        chestQuantity = 300;
+        chestQuantity = 3;
         chestLevel = 0;
         goldQuantity = 0;
         ibosID = new int[18]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
