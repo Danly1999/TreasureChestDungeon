@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnimeSO02
   m_EditorClassIdentifier: 
   nameID: _TextID_gqer
-  enimeSprite: {fileID: 21300000, guid: 5f9a2985674706f42ae7a04f44d058ea, type: 3}
+  enimeSprite: {fileID: 21300000, guid: fe7687e5a0ee30e4798a1da316e5373b, type: 3}
   lv: 1
   hp: 200
   act: 5

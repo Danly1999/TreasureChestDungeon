@@ -35,6 +35,7 @@ public class ChestSO : ScriptableObject {
     public UnityAction<float> expAction;
     public UnityAction statsAction;
     public UnityAction<EnimeSO> enimestatsAction;
+    public UnityAction overEnimestatsAction;
     public UnityAction<EnimeSO[]> EnimeSOsSetAction;
     public UnityAction fightBlackGroundAction;
     public UnityAction setEnimeSpriteAction;
@@ -50,6 +51,10 @@ public class ChestSO : ScriptableObject {
     public UnityAction achievementRiseAction;
     public UnityAction<bool> EnbaChestAction;
     public UnityAction chestLevelUpAction;
+    public UnityAction<int> SetIboTeamIDAction;
+    public UnityAction IboTeamChangeAction;
+    public UnityAction<string> createhintAction;
+    public UnityAction overHintAction;
     public int levelStatic;
     public EquipmentName equipmentName;
     public ChestLevelSO[] chestLevelSO;
@@ -120,6 +125,10 @@ public class ChestSO : ScriptableObject {
     public void EnimestatsRise(EnimeSO enimeSO)
     {
         enimestatsAction.Invoke(enimeSO);
+    }
+    public void OverEnimestatsRise()
+    {
+        overEnimestatsAction.Invoke();
     }
     public void SetEnimeSOsRise(EnimeSO[] enimeSOs)
     {
@@ -211,6 +220,14 @@ public class ChestSO : ScriptableObject {
     public void ChestLevelUpRise()
     {
         chestLevelUpAction.Invoke();
+    }
+    public void SetIboTeamIDRise(int id)
+    {
+        SetIboTeamIDAction.Invoke(id);
+    }
+    public void IboTeamChangeRise()
+    {
+        IboTeamChangeAction.Invoke();
     }
 
     IEnumerator DelayedExecute()

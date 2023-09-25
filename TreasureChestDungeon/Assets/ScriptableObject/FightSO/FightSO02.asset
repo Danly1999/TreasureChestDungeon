@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65e7d11a079399489e5591f521133e2, type: 3}
+  m_Name: FightSO02
+  m_EditorClassIdentifier: 
+  scenceSprite: {fileID: 21300000, guid: 8095c4793b3e34045924d3ec640985bc, type: 3}
+  enimeSOs00:
+  - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}
+  - {fileID: 11400000, guid: fbf22e6f8ca72a34eb56e2ab43c5c5e4, type: 2}
+  - {fileID: 11400000, guid: 7aab85259c8244f4ebd77e62e3bac654, type: 2}
+  enimeSOs01:
+  - {fileID: 11400000, guid: d90284787df6f3b4aab7a3b178a0513b, type: 2}
+  - {fileID: 11400000, guid: e397be6870455f541aab2ee7c05b664e, type: 2}
+  - {fileID: 11400000, guid: 7aab85259c8244f4ebd77e62e3bac654, type: 2}
+  enimeSOs02:
+  - {fileID: 11400000, guid: d90284787df6f3b4aab7a3b178a0513b, type: 2}
+  - {fileID: 11400000, guid: fbf22e6f8ca72a34eb56e2ab43c5c5e4, type: 2}
+  - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}
+  enimeSOsBoss:
+  - {fileID: 11400000, guid: d90284787df6f3b4aab7a3b178a0513b, type: 2}
+  - {fileID: 11400000, guid: d90284787df6f3b4aab7a3b178a0513b, type: 2}
+  - {fileID: 11400000, guid: 7aab85259c8244f4ebd77e62e3bac654, type: 2}
+  - {fileID: 11400000, guid: 11bbc8bfc2aabcd4ca79b07071cb1d98, type: 2}

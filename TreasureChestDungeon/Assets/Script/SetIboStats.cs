@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class SetIboStats : MonoBehaviour,IPointerClickHandler
 {
     public ChestSO chestSO;
-    public EnimeSO enimeSO;
+    public int id;
     public GameObject key;
     
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        chestSO.EnimestatsRise(enimeSO);
+        chestSO.SetIboTeamIDRise(id);
+        chestSO.EnimestatsRise(chestSO.iboSO.ibos[id]);
     }
     private void OnEnable() 
     {

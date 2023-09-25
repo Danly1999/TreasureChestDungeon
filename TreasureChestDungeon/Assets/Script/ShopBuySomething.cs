@@ -22,7 +22,7 @@ public class ShopBuySomething : MonoBehaviour,IPointerClickHandler
             unityEvent.Invoke();
         }else
         {
-            Debug.Log("没钱,钱不够");
+            chestSO.createhintAction("_TextID_Hint08");
         }
     }
 }

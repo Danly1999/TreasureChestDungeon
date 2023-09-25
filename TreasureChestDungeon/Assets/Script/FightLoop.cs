@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,16 +57,10 @@ public class FightLoop : MonoBehaviour
             int enimeID = 1;
             if(isplayers)
             {
-                while (players.Contains(all[enimeID]))
-                {
-                    enimeID++;
-                }
+                enimeID = all.IndexOf(enimes[0]);
             }else
             {
-                while (enimes.Contains(all[enimeID]))
-                {
-                    enimeID++;
-                }
+                enimeID = all.IndexOf(players[0]);
             }
             
             SetEnime setEnimeAct = all[0].      GetComponent<SetEnime>();
@@ -85,9 +80,17 @@ public class FightLoop : MonoBehaviour
                 setEnimeDef.die.SetActive(true);
             }
             all[enimeID].GetComponent<Animator>().enabled = true;
-            all[enimeID].GetComponent<Image>().color = Color.red;
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.6f);//µôÑªÊ±
             //GameObject pa = Instantiate(PaPartical, all[enimeID].transform);
+            setEnimeDef.text.SetActive(true);
+            setEnimeDef.text.GetComponent<TextMeshProUGUI>().text = "-" + (int)Mathf.Min(hit * 100,100) + "%";
+            if (crit == 2)
+            {
+                setEnimeDef.text.GetComponent<TextMeshProUGUI>().color = Color.red;
+            }else
+            {
+                setEnimeDef.text.GetComponent<TextMeshProUGUI>().color = Color.black;
+            }
             setEnimeDef.pa.SetActive(true);
             //GameObject BoomPa = null;
             if(crit == 2)
@@ -100,10 +103,12 @@ public class FightLoop : MonoBehaviour
             all[enimeID].GetComponent<Animator>().enabled = false;
             all[enimeID].GetComponent<Image>().color = Color.white;
             setEnimeAct.particle.SetActive(false);
+            
             //Destroy(par);
             all[0].GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
             yield return new WaitForSeconds(0.2f);
             //Destroy(pa);
+            setEnimeDef.text.SetActive(false);
             setEnimeDef.pa.SetActive(false);
             if(crit == 2)
             {
@@ -148,7 +153,7 @@ public class FightLoop : MonoBehaviour
         {
             //change scene;
             pass[0].SetActive(false);
-            PlayerData.instance.goldQuantity += 50*(PlayerData.instance.fightSOID+1)/2;
+            PlayerData.instance.goldQuantity += 80*(PlayerData.instance.fightSOID+1)/2;
             PlayerData.instance.fightSOID = Mathf.Min(PlayerData.instance.fightSOID+1,chestSO.fightSOs.Length-1);
             chestSO.SetGoldRise();
             chestSO.ResetEnimeGroupRise();

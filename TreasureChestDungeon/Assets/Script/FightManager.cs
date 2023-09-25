@@ -15,13 +15,19 @@ public class FightManager : MonoBehaviour
     {
         chestSO.enimestatsAction += SetEnimeStats;
         chestSO.EnimeSOsSetAction += SetfightSO;
+        chestSO.overEnimestatsAction += OverEnimeStats;
     }
     private void OnDisable() 
     {
         chestSO.enimestatsAction -= SetEnimeStats;
         chestSO.EnimeSOsSetAction -= SetfightSO;
+        chestSO.overEnimestatsAction -= OverEnimeStats;
     }
-    public void SetEnimeStats(EnimeSO enimeSO)
+    public void OverEnimeStats()
+    {
+        enimeStats.SetActive(false);
+    }
+        public void SetEnimeStats(EnimeSO enimeSO)
     {
         enimeStats.SetActive(true);
         enimeStats.GetComponentsInChildren<Image>()[1].sprite = enimeSO.enimeSprite;
@@ -59,7 +65,16 @@ public class FightManager : MonoBehaviour
             
             if( PlayerData.instance.fightibosID[i] >= 0)
             {
-                PlayerenimeSOs.Add(chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]]);
+                float scale = (1f+(PlayerData.instance.level*0.1f));
+                EnimeSO iboSO = chestSO.iboSO.ibos[PlayerData.instance.fightibosID[i]];
+                EnimeSO newIboSO = ScriptableObject.CreateInstance<EnimeSO>();
+                newIboSO.nameID = iboSO.nameID;
+                newIboSO.hp   = iboSO.hp*scale;
+                newIboSO.act  = iboSO.act*scale;
+                newIboSO.def  = iboSO.def*scale;
+                newIboSO.crit = iboSO.crit*scale;
+                newIboSO.enimeSprite = iboSO.enimeSprite;
+                PlayerenimeSOs.Add(newIboSO);
             }
         }
         PlayerGroup.GetComponent<FightGroup>().enimeSOs = PlayerenimeSOs.ToArray();

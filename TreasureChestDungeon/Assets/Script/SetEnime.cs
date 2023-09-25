@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class SetEnime : MonoBehaviour,IPointerClickHandler
+public class SetEnime : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     public ChestSO chestSO;
     public EnimeSO enimeSO;
@@ -14,6 +14,7 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
     public GameObject boomPa;
     public GameObject die;
     public GameObject particle;
+    public GameObject text;
     private void OnEnable() 
     {
         slider = GetComponentInChildren<Slider>();
@@ -26,8 +27,14 @@ public class SetEnime : MonoBehaviour,IPointerClickHandler
         Destroy(gameObject);
     }
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
         chestSO.EnimestatsRise(enimeSO);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        chestSO.OverEnimestatsRise();
     }
 }

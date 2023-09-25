@@ -10,16 +10,19 @@ public class SetIboManager : MonoBehaviour
     public GameObject iboStats;
     public GameObject[] iboGroup;
     public GameObject ibo;
+    public TeamManager teamManager;
 
     private void OnEnable() 
     {
         chestSO.enimestatsAction += SetIboStats;
         chestSO.CreateIboAction += CreateIbo;
+        chestSO.SetIboTeamIDAction += SetIboTeamID;
     }
     private void OnDisable() 
     {
         chestSO.enimestatsAction -= SetIboStats;
         chestSO.CreateIboAction -= CreateIbo;
+        chestSO.SetIboTeamIDAction -= SetIboTeamID;
     }
     private void Start() {
         for (int i = 0; i < PlayerData.instance.ibosID.Length; i++)
@@ -31,6 +34,10 @@ public class SetIboManager : MonoBehaviour
             } 
             iboGroup[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0,0,UnityEngine.Random.Range(-15f,15f)));
         }
+    }
+    public void SetIboTeamID(int id)
+    {
+        teamManager.id = id;
     }
     public void SetIboStats(EnimeSO enimeSO)
     {
@@ -48,7 +55,8 @@ public class SetIboManager : MonoBehaviour
         chestSO.languageDictionarys.TryGetValue("_TextID_Def",out def);
         chestSO.languageDictionarys.TryGetValue("_TextID_Crit",out crit);
         iboStats.GetComponentInChildren<TextMeshProUGUI>().font = chestSO.font;
-        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = name+"\n" + hp +enimeSO.hp+"\n" + act +enimeSO.act+"\n" + def +enimeSO.def+"\n" + crit +enimeSO.crit;
+        float scale = (1f+(PlayerData.instance.level*0.1f));
+        iboStats.GetComponentInChildren<TextMeshProUGUI>().text = name+"\n" + hp +enimeSO.hp*scale+"\n" + act +enimeSO.act*scale+"\n" + def +enimeSO.def*scale+"\n" + crit +enimeSO.crit*scale;
 
     }
     public void CreateIbo(int ibosID)

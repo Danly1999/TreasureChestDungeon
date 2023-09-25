@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnimeSO01
   m_EditorClassIdentifier: 
   nameID: _TextID_borkun
-  enimeSprite: {fileID: 21300000, guid: c4c863cc44592dd40b37c1d0c64e8716, type: 3}
+  enimeSprite: {fileID: 21300000, guid: 21d05faf26c3ede4a86e46cfed9391a1, type: 3}
   lv: 1
   hp: 100
   act: 500

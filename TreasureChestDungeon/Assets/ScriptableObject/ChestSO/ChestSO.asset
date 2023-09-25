@@ -17,20 +17,25 @@ MonoBehaviour:
   fightSOs:
   - {fileID: 11400000, guid: 20d6bb16988c0914e80ee0d3179c376f, type: 2}
   - {fileID: 11400000, guid: 5dc74481405b8e9479adec4e3356d1c0, type: 2}
+  - {fileID: 11400000, guid: ce7f56120ab380b45aa1c5df86a5a15b, type: 2}
+  - {fileID: 11400000, guid: 62b53ac9dffef564e8c5c1e5250592e6, type: 2}
+  - {fileID: 11400000, guid: a3d2c570acdd4854888395627eebc166, type: 2}
   levelSOs:
   - {fileID: 11400000, guid: c928d9f63c002544a817e595fb8b717d, type: 2}
   - {fileID: 11400000, guid: 39a9e761eac751544b93b55830d86027, type: 2}
   - {fileID: 11400000, guid: 19dc76a95e2d8f94a880443baad88d4c, type: 2}
   - {fileID: 11400000, guid: 10b064faf094a1040b52c7e918a7b4ee, type: 2}
   - {fileID: 11400000, guid: 89042f7c9d1af7b4593bb3b3dbe93054, type: 2}
-  levelStatic: 0
-  equipmentName: 1
+  levelStatic: 4
+  equipmentName: 2
   chestLevelSO:
   - {fileID: 11400000, guid: 7ce8228e65221024581b2d3961d2061d, type: 2}
   - {fileID: 11400000, guid: 7286ff059de25c34eba0da73c8ea20c0, type: 2}
   - {fileID: 11400000, guid: 21fec8393c66ed0498c27add3ee943e6, type: 2}
   - {fileID: 11400000, guid: 7618d2927f6aeb44ebff8accf357b47f, type: 2}
   - {fileID: 11400000, guid: 3cdfd5015fd77904e8ee62cd700f2f7b, type: 2}
+  - {fileID: 11400000, guid: 9f0cce90c3ed6cd45aaf5b2d9f753838, type: 2}
+  - {fileID: 11400000, guid: f23d47772f9defb44aff33411f58280c, type: 2}
   playerSprite: {fileID: 21300000, guid: c4198623a48e52e4b9806a74deac8db1, type: 3}
-  font: {fileID: 11400000, guid: 9e832de4ae792474894b71132decf9f2, type: 2}
+  font: {fileID: 11400000, guid: 02f5f8ead448a0445b65ac229cc9755f, type: 2}
   iboSO: {fileID: 11400000, guid: 08f2e43fd127d584586d705498d1ee3b, type: 2}

@@ -15,9 +15,11 @@ public class EventManager : MonoBehaviour
     public GameObject black;
     public Button button;
     public TextMeshProUGUI chestText;
-    public TextMeshProUGUI chestLevelText;
+    public TextMeshProUGUI[] chestLevelTexts;
     public GameObject openKey;
     public GameObject closeKey;
+    public GameObject hint;
+    public Camera mainCamera;
     private void OnEnable() {
         chestSO.canLoop = false;
         chestSO.action += eve;
@@ -27,8 +29,13 @@ public class EventManager : MonoBehaviour
         chestSO.EnbaChestAction += buttonEnb;
         OnEnaEvent.Invoke();
         chestSO.chestLevelUpAction += ChestLevelUp;
+        chestSO.createhintAction += Createhint;
+        chestSO.overHintAction += Overhint;
         CloseKey();
-        chestLevelText.text = "LV : " + PlayerData.instance.chestLevel;
+        for (int i = 0; i < chestLevelTexts.Length; i++)
+        {
+            chestLevelTexts[i].text = "LV : " + PlayerData.instance.chestLevel;
+        }
     }
     private void OnDisable() {
         chestSO.action -= eve;
@@ -38,8 +45,11 @@ public class EventManager : MonoBehaviour
     }
     public void ChestLevelUp()
     {
-        PlayerData.instance.chestLevel++;
-        chestLevelText.text = "LV : " + PlayerData.instance.chestLevel;
+        PlayerData.instance.chestLevel=Mathf.Min(PlayerData.instance.chestLevel+1,6);
+        for (int i = 0; i < chestLevelTexts.Length; i++)
+        {
+            chestLevelTexts[i].text = "LV : " + PlayerData.instance.chestLevel;
+        }
     }
     public void CloseKey()
     {
@@ -88,6 +98,37 @@ public class EventManager : MonoBehaviour
             }
         }
 
+    }
+    private void Update()
+    {
+    }
+    private void Createhint(string id)
+    {
+        if (chestSO.languageDictionarys.TryGetValue(id, out string text))
+        {
+            hint.SetActive(true);
+        RectTransform hintRectTransform = hint.GetComponent<RectTransform>();
+        
+
+            int length = text.Length;
+            hintRectTransform.sizeDelta = new Vector2(Mathf.Max(Mathf.Min(16f * length, 250), 120), Mathf.Max(Mathf.Min(8f * length, 150),60));
+            TextMeshProUGUI textMeshPro = hint.GetComponentInChildren<TextMeshProUGUI>();
+            if(textMeshPro.font != chestSO.font)
+            {
+                textMeshPro.font = chestSO.font;
+            }
+            textMeshPro.text = text;
+
+        
+        
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+        hintRectTransform.position = new Vector3(worldPosition.x- (hintRectTransform.sizeDelta.x*0.005f), worldPosition.y- (hintRectTransform.sizeDelta.y*0.005f), hintRectTransform.position.z);
+        }
+    }
+    private void Overhint()
+    {
+        hint.SetActive(false);
     }
 
 }
